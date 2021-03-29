@@ -11,6 +11,8 @@ namespace FlightSimulator
     class FlightController
     {
         FGClient fg_client;
+        FlightDataParser dataParser;
+
         public FlightController()
         {
             fg_client = new FGClient();
@@ -33,6 +35,7 @@ namespace FlightSimulator
                         for (int i = 0; i < lines.Length; i++)
                         {
                             //Notify()
+                            
                             fg_client.Send(lines[i] + "\n");
                             Trace.WriteLine(lines[i]);
                             Thread.Sleep(100);
