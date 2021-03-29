@@ -19,8 +19,8 @@ namespace FlightSimulator
         public void SimulateFlight()
         {
             Trace.WriteLine("Connecting...");
-            //new Thread(delegate ()
-            //{
+            new Thread(delegate ()
+            {
                 bool running = true;
                 while(running)
                 {
@@ -32,6 +32,7 @@ namespace FlightSimulator
                         string[] lines = File.ReadAllLines(csv);
                         for (int i = 0; i < lines.Length; i++)
                         {
+                            //Notify()
                             fg_client.Send(lines[i] + "\n");
                             Trace.WriteLine(lines[i]);
                             Thread.Sleep(100);
@@ -44,7 +45,7 @@ namespace FlightSimulator
                         Trace.WriteLine("Failed to Connect!.");
                     }
                 }
-            //});
+            }).Start();
         }
         public delegate void dataChanged();
     }
