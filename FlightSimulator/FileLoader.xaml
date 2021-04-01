@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="FileLoader" Height="220" Width="600">
+        Title="FileLoader" Height="220" Width="600" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />

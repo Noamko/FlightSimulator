@@ -12,24 +12,47 @@ namespace FlightSimulator
     {
         FGClient fg_client;
         bool running;
+        public int simulationSpeed { get; set; }
+        public string csv_file { get; set; }
+        public int startingLine { get; set; }
+        static FlightController instance = null;
 
         public delegate void dataChangedEventHandler(object sender, FlightControllerEventArgs e);
         public event dataChangedEventHandler dataUpdated;
         FlightDataParser parser;
 
-        public FlightController()
+        private FlightController()
         {
             fg_client = new FGClient();
-            running = false;
-
-            string csv = @"C:\Users\noamk\Desktop\reg_flight.csv"; //should get this from FileHandler
-            StreamReader csvFile = new StreamReader(csv);
-            parser = new FlightDataParser(csv);
-            Trace.WriteLine(parser.GetDataFromLine(400, "aileron"));
-
-            
+            running = true;
+            simulationSpeed = 100;
+            startingLine = 0;
         }
 
+        public static FlightController GetInstance
+        {
+            get
+            {
+                if(instance == null)
+                {
+                    instance = new FlightController();
+                }
+                return instance;
+            }
+        }
+        public void loadCSV(string csv)
+        {
+            this.csv_file = csv;
+            parser = new FlightDataParser(csv);
+        }
+        public int getNumberOfLines()
+        {
+            if(parser == null)
+            {
+                return 0;
+            }
+            return parser.GetNumberOfLines();
+        }
         private void Notify(int line)
         {
             FlightControllerEventArgs e_args = new FlightControllerEventArgs(parser.Parse(line));
@@ -38,15 +61,7 @@ namespace FlightSimulator
 
         private void FlightController_dataChanged(object sender, EventArgs e)
         {
-        }
 
-
-        // should be here?
-        public void StartFlightGear()
-        {
-            //if (fileHandler.fgPath == null)
-            //    throw new NullReferenceException("FlightGear Path isn't initialized");
-            //System.Diagnostics.Process.Start(fileHandler.fgPath, "--launcher");
         }
 
         public void StopSimulation()
@@ -62,18 +77,15 @@ namespace FlightSimulator
                 {
                     if (fg_client.Connect("localhost", 5400))
                     {
-                        string csv = @"C:\Users\noamk\Desktop\reg_flight.csv"; //should get this from FileHandler
-                        StreamReader csvFile = new StreamReader(csv);
-                        string[] lines = File.ReadAllLines(csv);
+                        string[] lines = File.ReadAllLines(csv_file);
                         for (int i = firstLine; i < lines.Length; i++)
                         {
                             Notify(i);
 
                             //should be here?
                             fg_client.Send(lines[i] + "\n");
-                            Trace.WriteLine(lines[i]);
-                            Thread.Sleep(100);
-                            //lastLine = i; // todo move this to media player ->change to mediaplayer.setCurrentLine(i);
+                            Thread.Sleep(simulationSpeed);
+                            this.startingLine = i;
 
                         }
                         fg_client.Close();

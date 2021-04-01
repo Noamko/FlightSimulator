@@ -38,3 +38,6 @@ C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\F
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\FlightSimulator.genruntimeconfig.cache
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\FileLoader.g.cs
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\FileLoader.baml
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\MediaPlayer.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\MediaPlayer.baml

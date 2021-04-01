@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FlightSimulator
 {
-    class FlightControllerEventArgs :EventArgs
+    class FlightControllerEventArgs  :EventArgs
     {
         Dictionary<string, string> dataValues;
 
@@ -12,7 +12,7 @@ namespace FlightSimulator
         {
             this.dataValues = values;
         }
-        string GetData(string data)
+        public string GetData(string data)
         {
             return dataValues[data];
         }

@@ -5,16 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="tb_FlightData"  Grid.Row="1" AcceptsReturn="True"/>
+        <local:MediaPlayer x:Name="mp" Grid.Row="1" VerticalAlignment="Bottom" Margin="5" />
+
     </Grid>
 </Window>

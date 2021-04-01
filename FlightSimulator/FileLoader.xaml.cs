@@ -46,6 +46,13 @@ namespace FlightSimulator
             {
                 tb_xmlPath.Text = openFileDlg.FileName;
                 fh.xmlPath = openFileDlg.FileName;
+
+                string flightgearNeededPath = fh.xmlPath.Replace(@"data\Protocol\playback_small.xml", @"bin\fgfs.exe");
+                if (this.fh.fgPath == "" && System.IO.File.Exists(flightgearNeededPath))
+                {
+                    this.fh.fgPath = flightgearNeededPath;
+                    tb_exePath.Text = this.fh.fgPath;
+                }
                 checkFinish();
             }
         }

@@ -25,7 +25,7 @@ namespace FlightSimulator
         public MainWindow()
         {
             InitializeComponent();
-            flightController = new FlightController();
+            flightController = FlightController.GetInstance;
             fileHandler = new FileHandler();
         }
 
@@ -37,8 +37,16 @@ namespace FlightSimulator
             if (res == true)
             {
                 this.IsEnabled = true;
-                System.Diagnostics.Trace.WriteLine(fileHandler.csvPath);
+                flightController.loadCSV(fileHandler.csvPath);
+                StartFlightGear();
             }
+        }
+
+        public void StartFlightGear()
+        {
+            if (fileHandler.fgPath == null)
+                throw new NullReferenceException("FlightGear Path isn't initialized");
+            System.Diagnostics.Process.Start(fileHandler.fgPath, "--launcher");
         }
 
         private void FlightController_dataChanged(object sender, EventArgs e)

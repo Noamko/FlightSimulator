@@ -79,5 +79,10 @@ namespace FlightSimulator
         {
             return lines[index];
         }
+
+        public int GetNumberOfLines()
+        {
+            return lines.Length;
+        }
     }
 }
