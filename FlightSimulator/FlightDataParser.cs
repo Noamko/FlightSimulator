@@ -10,15 +10,13 @@ namespace FlightSimulator
         string csv_file;
         string[] lines;
         Dictionary<int, string> data_headers;
-        Dictionary<string, float> data_values;
         
         //TODO: are this strings should be stored globaly?
         public FlightDataParser(string csv_file)
-        {
+        { 
             this.csv_file = csv_file;
             lines = File.ReadAllLines(this.csv_file);
             data_headers = new Dictionary<int, string>();
-
             data_headers.Add(0,"aileron");
             data_headers.Add(1,"elevator");
             data_headers.Add(2,"rudder");
@@ -61,19 +59,21 @@ namespace FlightSimulator
             data_headers.Add(39,"vertical-speed-indicator_indicated-speed-fpm");
             data_headers.Add(40,"engine_rpm");
         }
-        public void Parse(int line)
+
+        public Dictionary<string,string> Parse(int line)
         {
-            data_values = new Dictionary<string, float>(); //actual values
+            Dictionary<string, string>  data_values = new Dictionary<string, string>(); //actual values
             for(int i = 0; i < data_headers.Count; i++)
             {
                 string[] line_data = GetLine(line).Split(',');
-                data_values.Add(data_headers[i], float.Parse(line_data[i]));
+                data_values.Add(data_headers[i], line_data[i]);
             }
+
+            return data_values;
         }
-        public float GetDataFromLine(int line,string name)
+        public string GetDataFromLine(int line,string name)
         {
-            Parse(line); //update dicts
-            return data_values[name];
+            return Parse(line)[name];
         }
         public string GetLine(int index)
         {

@@ -6,7 +6,8 @@ namespace FlightSimulator
 {
     interface CSVParser //a basic interface to get lines from a csv file
     {
-        public void Parse();
+        public Dictionary<string, string> Parse(int line);
+
 
         public string GetLine(int index);
     }

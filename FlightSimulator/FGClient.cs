@@ -25,7 +25,6 @@ namespace FlightSimulator
 
             catch
             {
-                Console.WriteLine("Connection Error.");
                 return false;
             }
         }

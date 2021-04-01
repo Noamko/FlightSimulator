@@ -21,15 +21,29 @@ namespace FlightSimulator
     public partial class MainWindow : Window
     {
         FlightController flightController;
+        FileHandler fileHandler;
         public MainWindow()
         {
             InitializeComponent();
             flightController = new FlightController();
+            fileHandler = new FileHandler();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            flightController.SimulateFlight();
+            this.IsEnabled = false;
+            FileLoader fLoader = new FileLoader(fileHandler);
+            Nullable<bool> res = fLoader.ShowDialog();
+            if (res == true)
+            {
+                this.IsEnabled = true;
+                System.Diagnostics.Trace.WriteLine(fileHandler.csvPath);
+            }
+        }
+
+        private void FlightController_dataChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Trace.WriteLine("WOW");
         }
     }
 }
