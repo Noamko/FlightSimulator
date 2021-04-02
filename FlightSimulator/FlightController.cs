@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace FlightSimulator
 {
@@ -11,22 +12,23 @@ namespace FlightSimulator
     class FlightController
     {
         FGClient fg_client;
-        bool running;
-        public int simulationSpeed { get; set; }
+
         public string csv_file { get; set; }
-        public int startingLine { get; set; }
+
         static FlightController instance = null;
 
         public delegate void dataChangedEventHandler(object sender, FlightControllerEventArgs e);
         public event dataChangedEventHandler dataUpdated;
         FlightDataParser parser;
 
+        mediaController media;
+
         private FlightController()
         {
             fg_client = new FGClient();
-            running = true;
-            simulationSpeed = 100;
-            startingLine = 0;
+
+
+            media = mediaController.GetInstance;
         }
 
         public static FlightController GetInstance
@@ -43,8 +45,18 @@ namespace FlightSimulator
         public void loadCSV(string csv)
         {
             this.csv_file = csv;
+            
             parser = new FlightDataParser(csv);
+            media.numberOfLines = parser.GetNumberOfLines();
+            media.PropertyChanged += play;
         }
+
+        private void play(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender == media && e.PropertyName.Equals("play"))
+                this.SimulateFlight();
+        }
+
         public int getNumberOfLines()
         {
             if(parser == null)
@@ -56,7 +68,10 @@ namespace FlightSimulator
         private void Notify(int line)
         {
             FlightControllerEventArgs e_args = new FlightControllerEventArgs(parser.Parse(line));
-            dataUpdated(this, e_args);
+            if (dataUpdated != null)
+            {
+                dataUpdated(this, e_args);
+            }
         }
 
         private void FlightController_dataChanged(object sender, EventArgs e)
@@ -64,38 +79,29 @@ namespace FlightSimulator
 
         }
 
-        public void StopSimulation()
-        {
-            this.running = false;
-        }
         
-        public void SimulateFlight(int firstLine)
+        public void SimulateFlight()
         {
             new Thread(delegate ()
             {
-                while(running)
-                {
                     if (fg_client.Connect("localhost", 5400))
                     {
                         string[] lines = File.ReadAllLines(csv_file);
-                        for (int i = firstLine; i < lines.Length; i++)
+                        while (media.isRunning)
                         {
+                        int i = media.firstLine;
                             Notify(i);
-
-                            //should be here?
                             fg_client.Send(lines[i] + "\n");
-                            Thread.Sleep(simulationSpeed);
-                            this.startingLine = i;
+                            Thread.Sleep(media.simulationSpeed);
+                            media.firstLine++;
 
                         }
                         fg_client.Close();
-                        running = false;
                     }
                     else
                     {
                         Trace.WriteLine("Error");
                     }
-                }
             }).Start();
         }
     }

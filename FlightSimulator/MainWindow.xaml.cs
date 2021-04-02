@@ -42,6 +42,7 @@ namespace FlightSimulator
             }
         }
 
+
         public void StartFlightGear()
         {
             if (fileHandler.fgPath == null)

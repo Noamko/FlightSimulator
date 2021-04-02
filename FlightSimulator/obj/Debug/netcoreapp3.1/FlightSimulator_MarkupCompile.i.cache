@@ -1,19 +1,19 @@
 ﻿FlightSimulator
-1.0.0.0
+
 
 winexe
 C#
 .cs
-C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\
+C:\Users\yuval\Source\Repos\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\
 FlightSimulator
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\App.xaml
-31830763819
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+C:\Users\yuval\Source\Repos\FlightSimulator\FlightSimulator\App.xaml
+31955488619
 
-14188500824
-192-1533232326
+16-1816266742
+1921654412462
 FileLoader.xaml;MainWindow.xaml;MediaPlayer.xaml;
 
 False

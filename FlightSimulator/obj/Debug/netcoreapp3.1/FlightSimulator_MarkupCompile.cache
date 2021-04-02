@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\
+C:\Users\yuval\Source\Repos\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\
 FlightSimulator
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\App.xaml
-31830763819
+TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
+C:\Users\yuval\Source\Repos\FlightSimulator\FlightSimulator\App.xaml
+31955488619
 
-121548105211
-192-1533232326
+15793992544
+1921654412462
 FileLoader.xaml;MainWindow.xaml;MediaPlayer.xaml;
 
 False
