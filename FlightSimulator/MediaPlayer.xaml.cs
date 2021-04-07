@@ -31,10 +31,7 @@ namespace FlightSimulator
         private void Controller_dataUpdated(object sender, FlightControllerEventArgs e)
         {
             this.startling_line = controller.startingLine;
-
             System.Diagnostics.Trace.WriteLine(e.GetData("aileron"));
-
-
         }
 
         private string getTotalTime()
@@ -89,6 +86,5 @@ namespace FlightSimulator
         {
             VM_play(0);
         }
-
     }
 }

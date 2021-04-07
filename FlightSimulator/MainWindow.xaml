@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="500" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -17,6 +17,5 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <local:MediaPlayer x:Name="mp" Grid.Row="1" VerticalAlignment="Bottom" Margin="5" />
-
     </Grid>
 </Window>

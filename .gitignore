@@ -1,4 +1,7 @@
 
 *.cache
-*.cache
-*.cache
+FlightSimulator/bin/Debug/netcoreapp3.1/FlightSimulator.dll
+FlightSimulator/bin/Debug/netcoreapp3.1/FlightSimulator.pdb
+FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.csprojAssemblyReference.cache
+FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.dll
+*.v2
