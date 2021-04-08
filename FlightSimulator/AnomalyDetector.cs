@@ -7,7 +7,6 @@ using System.Text;
 
 namespace FlightSimulator
 {
-
     class AnomalyDetector
     {
         const string dll_path = @"C:\Users\noamk\source\repos\AnomalyDetectorLib\x64\Debug\AnomalyDetectorLib.dll";
@@ -28,7 +27,7 @@ namespace FlightSimulator
         static extern int getTimeStep(IntPtr v, int index);
 
         [DllImport(dll_path, EntryPoint = "getDesciption")]
-        static extern IntPtr getDesciption(IntPtr v, int index);
+        static extern IntPtr getDiscription(IntPtr v, int index);
 
         [DllImport(dll_path, EntryPoint = "CHECK")]
         static extern int CHECK();
@@ -45,7 +44,6 @@ namespace FlightSimulator
         [DllImport(dll_path, EntryPoint = "len")]
         static extern int len(IntPtr sw);
 
-
         IntPtr detector;
         IntPtr AnomalyReportVector;
         public AnomalyDetector()
@@ -53,7 +51,7 @@ namespace FlightSimulator
             this.detector = createSimpleAnomalyDetectorInstance();
         }
 
-        public IntPtr _String(string s)
+        public IntPtr sw_string(string s)
         {
             IntPtr STR = createString(s.Length);
             for (int i= 0; i < s.Length; i++)
@@ -64,26 +62,31 @@ namespace FlightSimulator
         }
         public void LearnNormal(string names, string filename)
         {
-            IntPtr f = _String(filename);
-            IntPtr _names = _String(names);
-            learn(detector,_names, names.Length, f);
+            IntPtr sw_filename = sw_string(filename);
+            IntPtr sw_names = sw_string(names);
+            learn(detector,sw_names, names.Length, sw_filename);
+            dispose(sw_filename);
+            dispose(sw_names);
         }
 
         public void Detect(string names, string filename)
         {
-            IntPtr f = _String(filename);
-            IntPtr _names = _String(names);
-            AnomalyReportVector = detect(this.detector, _names, names.Length, f);
+            IntPtr sw_filename = sw_string(filename);
+            IntPtr sw_names = sw_string(names);
+            AnomalyReportVector = detect(this.detector, sw_names, names.Length, sw_filename);
+            dispose(sw_filename);
+            dispose(sw_names);
         }
 
         public string GetDiscription(int index)
         {
-            IntPtr sw = getDesciption(AnomalyReportVector, index);
+            IntPtr sw = getDiscription(AnomalyReportVector, index);
             string s = "";
             for(int i = 0; i < len(sw); i++)
             {
                 s += getChar(sw, i);
             }
+            dispose(sw);
             return s;
         }
 
@@ -95,6 +98,7 @@ namespace FlightSimulator
         ~AnomalyDetector()
         {
             dispose(detector);
+            dispose(AnomalyReportVector);
         }
     }
 }
