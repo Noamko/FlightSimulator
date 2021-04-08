@@ -5,3 +5,8 @@ FlightSimulator/bin/Debug/netcoreapp3.1/FlightSimulator.pdb
 FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.csprojAssemblyReference.cache
 FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.dll
 *.v2
+.vs/FlightSimulator/v16/.suo
+FlightSimulator/obj/x64/Release/netcoreapp3.1/FileLoader.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/LineChart_view.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/MainWindow.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/MediaPlayer.g.i.cs
