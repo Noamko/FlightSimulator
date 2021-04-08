@@ -12,8 +12,6 @@ namespace FlightSimulator
         int FirstLine;
         int NumberOfLines;
         bool IsRunning;
- //       string CurrentTime;
- //       string TotalTime;
         static mediaController instance = null;
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -12,16 +12,22 @@ namespace FlightSimulator
         public mediaController_VM ()
         {
             this.media = mediaController.GetInstance;
-            media.PropertyChanged += delegate (Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+            media.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
+
+        public void getTotalTimeInSec(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "totalTime")
+            {
+                NotifyPropertyChanged("VM_getTotalTimeInSec");
+            }
+        }
+
         public void VM_play()
         {
-        //    if (media.isRunning == false)
-         //   {
-                media.play();
-     //       }
+            media.play();
         }
         public void VM_pause()
         {
@@ -29,18 +35,11 @@ namespace FlightSimulator
         }
         public void VM_goto(int precent)
         {
-       //     VM_pause();
-       //     double gotoLine = ((double)precent / 100) * media.numberOfLines;
-        //    media.firstLine = (int)gotoLine;
-       //     System.Threading.Thread.Sleep(1000);
-       //     VM_play();
-         media.goTo(precent);
-     //       NotifyPropertyChanged("VM_goto");
+            media.goTo(precent);
         }
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-
         }
 
         internal void VM_setSpeed(double newSpeed)
@@ -51,11 +50,10 @@ namespace FlightSimulator
             VM_play();
         }
 
-    public string VM_totalTime { get { return media.getTotalTime(); } }
-           
-        
-   public string VM_currentTime { get { return media.getCurrentTime(); }}
-      
-   
+        public string VM_totalTime { get { return media.getTotalTime(); } }
+
+        public int VM_getTotalTimeInSec { get { return media.getTotalTimeInMilisecs() / 1000; } }
+
+        public string VM_currentTime { get { return media.getCurrentTime(); }}
     }
 }

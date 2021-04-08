@@ -61,20 +61,13 @@ namespace FlightSimulator
 
 
         }
-        private void ComboBox_DropDownClosed(object sender, EventArgs e)
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Charts.SelectedItem != null)
+            if (lv_charts.SelectedItem != null)
             {
-                plot.Title = Charts.SelectedItem.ToString();
-                vm.updateList((string)Charts.SelectedItem);
+                plot.Title = lv_charts.SelectedItem.ToString();
+                vm.updateList((string)lv_charts.SelectedItem);
             }
-
         }
-
-        //   private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //    {
-        //     }
-
-
     }
 }

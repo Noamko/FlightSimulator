@@ -18,8 +18,6 @@ namespace FlightSimulator
 
         DataCalculations dc;
 
-     //   Dictionary<string, Lin>
-
         public lineChart_model()
         {
             secondsTocalc = 30;
@@ -55,7 +53,6 @@ namespace FlightSimulator
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-
         }
 
 
@@ -80,16 +77,12 @@ namespace FlightSimulator
             get { return Names; }
         }
 
-
-
-
         public LinkedList<DataPoint> getList(string name)
         {
             if (!name.Equals(""))
                 return datalists[name];
             return null;
         }
-          
         
         private void UpdateMedia(object sender, PropertyChangedEventArgs e)
         {
