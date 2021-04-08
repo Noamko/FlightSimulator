@@ -23,7 +23,6 @@ C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\Debug\netcoreapp3.1\F
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\Debug\netcoreapp3.1\FlightSimulator.runtimeconfig.dev.json
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\Debug\netcoreapp3.1\FlightSimulator.dll
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\Debug\netcoreapp3.1\FlightSimulator.pdb
-C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\FlightSimulator.csprojAssemblyReference.cache
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\FlightSimulator_MarkupCompile.cache
@@ -41,3 +40,4 @@ C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\F
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\MediaPlayer.g.cs
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\GeneratedInternalTypeHelper.g.cs
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\MediaPlayer.baml
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\Debug\netcoreapp3.1\FlightSimulator.csprojAssemblyReference.cache

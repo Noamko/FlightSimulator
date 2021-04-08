@@ -4,10 +4,10 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace FlightSimulator
 {
-    //Should have al
     class FlightController
     {
         FGClient fg_client;
@@ -59,11 +59,6 @@ namespace FlightSimulator
             dataUpdated(this, e_args);
         }
 
-        private void FlightController_dataChanged(object sender, EventArgs e)
-        {
-
-        }
-
         public void StopSimulation()
         {
             this.running = false;
@@ -82,7 +77,6 @@ namespace FlightSimulator
                         {
                             Notify(i);
 
-                            //should be here?
                             fg_client.Send(lines[i] + "\n");
                             Thread.Sleep(simulationSpeed);
                             this.startingLine = i;
