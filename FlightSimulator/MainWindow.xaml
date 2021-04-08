@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1100" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Flight Simulator" Height="500" Width="1100" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -30,6 +30,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <local:JoyStick_view Grid.Row="1" Grid.Column="1" Background="White" />
+                <TextBlock Text="Some Data" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="1" Text="Some Data" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="Some Data" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
             </Grid>
         </GroupBox>
     </Grid>
