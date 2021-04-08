@@ -4,29 +4,30 @@ using System.Text;
 using System.Threading;
 using System.IO;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+using System.ComponentModel;
 
 namespace FlightSimulator
 {
+    //Should have al
     class FlightController
     {
         FGClient fg_client;
-        bool running;
-        public int simulationSpeed { get; set; }
+
         public string csv_file { get; set; }
-        public int startingLine { get; set; }
+
         static FlightController instance = null;
 
         public delegate void dataChangedEventHandler(object sender, FlightControllerEventArgs e);
         public event dataChangedEventHandler dataUpdated;
         FlightDataParser parser;
 
+        mediaController media;
+        DataCalculations dc;
+
         private FlightController()
         {
             fg_client = new FGClient();
-            running = true;
-            simulationSpeed = 100;
-            startingLine = 0;
+            media = mediaController.GetInstance;
         }
 
         public static FlightController GetInstance
@@ -43,8 +44,20 @@ namespace FlightSimulator
         public void loadCSV(string csv)
         {
             this.csv_file = csv;
+            
             parser = new FlightDataParser(csv);
+            media.numberOfLines = parser.GetNumberOfLines();
+            media.PropertyChanged += play;
+            dc = new DataCalculations(parser);
+            TestMethod();
         }
+
+        private void play(object sender, PropertyChangedEventArgs e)
+        {
+            if (sender == media && e.PropertyName.Equals("play"))
+                this.SimulateFlight();
+        }
+
         public int getNumberOfLines()
         {
             if(parser == null)
@@ -56,41 +69,68 @@ namespace FlightSimulator
         private void Notify(int line)
         {
             FlightControllerEventArgs e_args = new FlightControllerEventArgs(parser.Parse(line));
-            dataUpdated(this, e_args);
+            if (dataUpdated != null)
+            {
+                dataUpdated(this, e_args);
+            }
         }
 
-        public void StopSimulation()
+        private void FlightController_dataChanged(object sender, EventArgs e)
         {
-            this.running = false;
+
         }
+
         
-        public void SimulateFlight(int firstLine)
+        public void SimulateFlight()
         {
             new Thread(delegate ()
             {
-                while(running)
-                {
                     if (fg_client.Connect("localhost", 5400))
                     {
                         string[] lines = File.ReadAllLines(csv_file);
-                        for (int i = firstLine; i < lines.Length; i++)
+                        while (media.isRunning)
                         {
+                        int i = media.firstLine;
                             Notify(i);
-
                             fg_client.Send(lines[i] + "\n");
-                            Thread.Sleep(simulationSpeed);
-                            this.startingLine = i;
+                            Thread.Sleep(media.simulationSpeed);
+                            media.firstLine++;
 
                         }
                         fg_client.Close();
-                        running = false;
                     }
                     else
                     {
                         Trace.WriteLine("Error");
                     }
-                }
             }).Start();
         }
+
+
+        public DataCalculations getDataCalculations { get { return dc; } }
+
+        public FlightDataParser getParser { get { return this.parser; } }
+
+
+
+        public void TestMethod()
+        {
+        //    //      string[] data = parser.GetDataByName("rudder");
+        //    //        foreach (string d in data )
+        //    //              System.Diagnostics.Trace.WriteLine(float.Parse(d));
+
+
+        //   double data = dc.pearsonOfTwoVals("aileron", "airspeed_indicator_indicated_speed_kt");/////////////////////
+
+        //    System.Diagnostics.Trace.WriteLine(data);
+        //    System.Diagnostics.Trace.WriteLine(dc.pearsonOfTwoVals("airspeed_indicator_indicated_speed_kt","aileron"));////////
+        //    System.Diagnostics.Trace.WriteLine(dc.pearsonOfTwoVals("aileron", "slip-skid-ball_indicated-slip-skid"));///////////////////
+
+        //    System.Diagnostics.Trace.WriteLine(dc.pearsonOfTwoVals("slip-skid-ball_indicated-slip-skid", "airspeed_indicator_indicated_speed_kt"));
+        //    System.Diagnostics.Trace.WriteLine(dc.pearsonOfTwoVals("airspeed_indicator_indicated_speed_kt", "slip-skid-ball_indicated-slip-skid"));
+        //    Trace.WriteLine(dc.pearsonOfTwoVals("slip-skid-ball_indicated-slip-skid", "aileron"));//////////
+        //    System.Diagnostics.Trace.WriteLine("MAX: "+dc.getMaxPearson("aileron"));
+        }
+
     }
 }

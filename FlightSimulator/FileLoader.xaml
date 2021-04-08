@@ -22,17 +22,17 @@
         <TextBlock Text="Open Simulator Files" FontSize="20" Margin="10" Grid.ColumnSpan="2" />
         <!--XML path-->
         <TextBlock Text="xml file:" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="10,5,0,5" />
-        <TextBox x:Name="tb_xmlPath" Grid.Row="1" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False"  />
+        <TextBox x:Name="tb_xmlPath" Text="{Binding VM_xmlPath}" Grid.Row="1" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False"  />
         <Button x:Name="btn_openXml" Content="Open" Grid.Row="1" Grid.Column="2" Margin="5" Click="btn_openXml_Click" />
         
         <!--csv path-->
         <TextBlock Text="csv file:" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"  Margin="10,5,0,5" />
-        <TextBox x:Name="tb_csvPath" Grid.Row="2" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" />
+        <TextBox x:Name="tb_csvPath" Text="{Binding VM_csvPath}" Grid.Row="2" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" />
         <Button x:Name="btn_opebCSV" Content="Open" Grid.Row="2" Grid.Column="2" Margin="5,5,0,5" HorizontalAlignment="Left" Width="33" Click="btn_opebCSV_Click" />
 
         <!--exe path-->
         <TextBlock Text="exe file:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"  Margin="10,5,0,5" />
-        <TextBox x:Name="tb_exePath" Grid.Row="3" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" />
+        <TextBox x:Name="tb_exePath" Text="{Binding VM_fgPath}" Grid.Row="3" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" />
         <Button x:Name="btn_opebEXE" Content="Open" Grid.Row="3" Grid.Column="2" Margin="5" Click="btn_opebEXE_Click" />
 
         <!--Finish button-->

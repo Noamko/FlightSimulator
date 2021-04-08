@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,28 +23,38 @@ namespace FlightSimulator
     {
         FlightController flightController;
         FileHandler fileHandler;
-        FileLoader fLoader;
-        MainWindow_VM vm;
         public MainWindow()
         {
             InitializeComponent();
             flightController = FlightController.GetInstance;
             fileHandler = new FileHandler();
-            vm = new MainWindow_VM();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.IsEnabled = false;
-            fLoader = new FileLoader(fileHandler);
+            FileLoader fLoader = new FileLoader(fileHandler);
             Nullable<bool> res = fLoader.ShowDialog();
             if (res == true)
             {
                 this.IsEnabled = true;
                 flightController.loadCSV(fileHandler.csvPath);
-                vm.StartFlightGear(fileHandler.fgPath);
-            }
+                StartFlightGear();
 
+            }
+        }
+
+
+        public void StartFlightGear()
+        {
+            if (fileHandler.fgPath == null)
+                throw new NullReferenceException("FlightGear Path isn't initialized");
+            System.Diagnostics.Process.Start(fileHandler.fgPath, "--launcher");
+        }
+
+        private void FlightController_dataChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Trace.WriteLine("WOW");
         }
     }
 }
