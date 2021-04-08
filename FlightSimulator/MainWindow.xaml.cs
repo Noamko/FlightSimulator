@@ -40,7 +40,6 @@ namespace FlightSimulator
                 this.IsEnabled = true;
                 flightController.loadCSV(fileHandler.csvPath);
                 StartFlightGear();
-
             }
         }
 

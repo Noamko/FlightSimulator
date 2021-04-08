@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="FlightSimulator.JoyStick_view"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulator"
+             mc:Ignorable="d"
+             x:Name="JoyStick" Loaded="JoyStick_Loaded">
+    <Grid x:Name="_grid" Width="{Binding ActualHeight, ElementName=_grid}">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="grid_top_height" />
+            <RowDefinition x:Name="grid_center_height"  />
+            <RowDefinition Height="{Binding Height, ElementName=grid_top_height}" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding Height, ElementName=grid_top_height}" />
+            <ColumnDefinition Width="{Binding Height, ElementName=grid_center_height}" />
+            <ColumnDefinition Width="{Binding Height, ElementName=grid_top_height}" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="JoyStick" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+        <Canvas x:Name="cnv" Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="1" Width="{Binding Height, ElementName=grid_center_height}" Height="{Binding Height, ElementName=grid_center_height}" >
+            <Ellipse Width="{Binding ActualWidth, ElementName=cnv}" Height="{Binding ActualHeight, ElementName=cnv}" Fill="DarkSlateGray" />
+            <Line x:Name="stick_rod"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Stroke="Black" Fill="Black"/>
+            <Ellipse x:Name="stick_controller"  Fill="Sienna"  />
+        </Canvas>
+        <Slider Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
+        <Slider Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical"  />
+        <Slider Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical" />
+    </Grid>
+</UserControl>

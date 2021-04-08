@@ -26,3 +26,6 @@ C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreap
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\x64\Release\netcoreapp3.1\OxyPlot.dll
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\x64\Release\netcoreapp3.1\OxyPlot.Wpf.dll
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\FlightSimulator.csproj.CopyComplete
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\FlightSimulator.csprojAssemblyReference.cache
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\JoyStick_view.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\JoyStick_view.baml
