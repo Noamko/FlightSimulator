@@ -2,3 +2,17 @@
 *.cache
 *.cache
 *.cache
+.vs/FlightSimulator/v16/.suo
+.vs/FlightSimulator/v16/.suo
+*.json
+*.props
+*.cache
+FlightSimulator/obj/x64/Release/netcoreapp3.1/App.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/FileLoader.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/FlightSimulator.AssemblyInfo.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/MediaPlayer.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/MainWindow.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/LineChart_view.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/GeneratedInternalTypeHelper.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/FlightSimulator_MarkupCompile.i.lref
+FlightSimulator/obj/x64/Release/netcoreapp3.1/.NETCoreApp,Version=v3.1.AssemblyAttributes.cs
