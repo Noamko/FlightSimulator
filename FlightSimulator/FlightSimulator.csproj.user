@@ -10,12 +10,18 @@
     <Compile Update="FileLoader.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="JoyStick_view.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MediaPlayer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="FileLoader.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="JoyStick_view.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="LineChart_view.xaml">

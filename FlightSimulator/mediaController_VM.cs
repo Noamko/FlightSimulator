@@ -18,10 +18,7 @@ namespace FlightSimulator
         }
         public void VM_play()
         {
-        //    if (media.isRunning == false)
-         //   {
-                media.play();
-     //       }
+            media.play();
         }
         public void VM_pause()
         {
@@ -29,18 +26,11 @@ namespace FlightSimulator
         }
         public void VM_goto(int precent)
         {
-       //     VM_pause();
-       //     double gotoLine = ((double)precent / 100) * media.numberOfLines;
-        //    media.firstLine = (int)gotoLine;
-       //     System.Threading.Thread.Sleep(1000);
-       //     VM_play();
-         media.goTo(precent);
-     //       NotifyPropertyChanged("VM_goto");
+            media.goTo(precent);
         }
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-
         }
 
         internal void VM_setSpeed(double newSpeed)
@@ -51,11 +41,9 @@ namespace FlightSimulator
             VM_play();
         }
 
-    public string VM_totalTime { get { return media.getTotalTime(); } }
+        public string VM_totalTime { get { return media.getTotalTime(); } }
            
         
-   public string VM_currentTime { get { return media.getCurrentTime(); }}
-      
-   
+        public string VM_currentTime { get { return media.getCurrentTime(); }}
     }
 }

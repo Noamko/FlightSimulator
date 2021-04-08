@@ -11,20 +11,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="btn_play" Content="Play" Grid.Row="1" Margin="5" Width="80" Click="btn_play_Click" />
-            <Button x:Name="btn_pause" Content="Pause" Grid.Row="1" Margin="5" Width="80" Click="btn_pause_Click" />
+            <Button x:Name="btn_play" Content="Play" Grid.Row="1" Margin="5"  Click="btn_play_Click" />
+            <Button x:Name="btn_pause" Content="Pause" Grid.Row="1" Margin="5"  Click="btn_pause_Click" />
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <TextBlock x:Name="txt_totalTime" Text="{Binding VM_totalTime}" FontSize="18" Margin="5" />
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <TextBlock x:Name="txt_currebtTime" Text="{Binding VM_currentTime}" FontSize="18" Margin="5" />
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="5">
-                <TextBox x:Name="tb_line" Width="80" VerticalAlignment="Center" />
+                <TextBox x:Name="tb_line" Width="100" VerticalAlignment="Center" />
                 <Button x:Name="btn_gotoLine" Content="Go" Margin="2" Click="btn_gotoLine_Click" />
             </StackPanel>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                <TextBox x:Name="tb_setSpeed" Width="80" VerticalAlignment="Center" Margin="2" />
+                <TextBox x:Name="tb_setSpeed" Width="100" VerticalAlignment="Center" Margin="2" />
                 <Button x:Name="btn_setSpeed" Content="set speed" Click="btn_setSpeed_Click" />
             </StackPanel>
         </StackPanel>
