@@ -12,10 +12,19 @@ namespace FlightSimulator
         public mediaController_VM ()
         {
             this.media = mediaController.GetInstance;
-            media.PropertyChanged += delegate (Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+            media.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
         }
+
+        public void getTotalTimeInSec(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == "totalTime")
+            {
+                NotifyPropertyChanged("VM_getTotalTimeInSec");
+            }
+        }
+
         public void VM_play()
         {
             media.play();
@@ -42,8 +51,9 @@ namespace FlightSimulator
         }
 
         public string VM_totalTime { get { return media.getTotalTime(); } }
-           
-        
+
+        public int VM_getTotalTimeInSec { get { return media.getTotalTimeInMilisecs() / 1000; } }
+
         public string VM_currentTime { get { return media.getCurrentTime(); }}
     }
 }

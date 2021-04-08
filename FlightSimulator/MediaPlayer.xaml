@@ -19,6 +19,7 @@
             <TextBlock x:Name="txt_currebtTime" Text="{Binding VM_currentTime}" FontSize="18" Margin="5" />
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="5">
+                <Slider x:Name="timeline_slider" Width="300" Minimum="0" Maximum="{Binding VM_getTotalTimeInSec}"  MouseDown="timeline_slider_MouseDown" ValueChanged="timeline_slider_ValueChanged" />
                 <TextBox x:Name="tb_line" Width="100" VerticalAlignment="Center" />
                 <Button x:Name="btn_gotoLine" Content="Go" Margin="2" Click="btn_gotoLine_Click" />
             </StackPanel>

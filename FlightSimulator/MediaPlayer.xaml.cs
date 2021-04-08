@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -56,6 +57,16 @@ namespace FlightSimulator
         {
             double newSpeed = double.Parse(tb_setSpeed.Text);
             vm.VM_setSpeed(newSpeed);
+        }
+
+        private void timeline_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Trace.WriteLine(timeline_slider.Value);
+        }
+
+        private void timeline_slider_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Trace.WriteLine(timeline_slider.Maximum);
         }
     }
 }
