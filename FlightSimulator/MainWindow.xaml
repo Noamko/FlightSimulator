@@ -17,6 +17,6 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <local:MediaPlayer x:Name="mp" Grid.Row="1" VerticalAlignment="Bottom" Margin="5" />
-
+        <local:LineChart_view HorizontalAlignment="Left" Height="320" Margin="5,5,0,0" VerticalAlignment="Top" Width="750" Grid.RowSpan="2"/>
     </Grid>
 </Window>

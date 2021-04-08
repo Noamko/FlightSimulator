@@ -12,8 +12,8 @@ namespace FlightSimulator
         int FirstLine;
         int NumberOfLines;
         bool IsRunning;
-        string CurrentTime;
-        string TotalTime;
+ //       string CurrentTime;
+ //       string TotalTime;
         static mediaController instance = null;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -106,6 +106,15 @@ namespace FlightSimulator
             return string.Format("{0:D2}m:{1:D2}s:{2:D3}ms",
                 t.Hours * 60 + t.Minutes, t.Seconds, t.Milliseconds);
         }
+        public int getCurrentTimeInMilisecs()
+        {
+            return defaultSpeed * firstLine;
+        }
+        public int getTotalTimeInMilisecs()
+        {
+            return defaultSpeed * numberOfLines;
+        }
+
         public void play()
         {
             if (isRunning == false)
@@ -113,6 +122,17 @@ namespace FlightSimulator
                 isRunning = true;
                 NotifyPropertyChanged("play");
             }
+        }
+
+
+        public void goTo(int precent)
+        {
+            isRunning = false;
+            double gotoLine = ((double)precent / 100) * numberOfLines;
+            firstLine = (int)gotoLine;
+            System.Threading.Thread.Sleep(1000);
+            play();
+            NotifyPropertyChanged("goto");
         }
     }
 }

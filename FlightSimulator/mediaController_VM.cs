@@ -29,9 +29,13 @@ namespace FlightSimulator
         }
         public void VM_goto(int precent)
         {
-            double gotoLine = ((double)precent / 100) * media.numberOfLines;
-            media.firstLine = (int)gotoLine;
-            VM_play();
+       //     VM_pause();
+       //     double gotoLine = ((double)precent / 100) * media.numberOfLines;
+        //    media.firstLine = (int)gotoLine;
+       //     System.Threading.Thread.Sleep(1000);
+       //     VM_play();
+         media.goTo(precent);
+     //       NotifyPropertyChanged("VM_goto");
         }
         public void NotifyPropertyChanged(string propName)
         {
@@ -43,6 +47,7 @@ namespace FlightSimulator
         {
             newSpeed = ((double)media.defaultSpeed / newSpeed);
             media.simulationSpeed = (int)newSpeed;
+            System.Threading.Thread.Sleep(1000);
             VM_play();
         }
 
