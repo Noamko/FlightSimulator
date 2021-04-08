@@ -18,6 +18,9 @@
     <Page Update="FileLoader.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="LineChart_view.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
