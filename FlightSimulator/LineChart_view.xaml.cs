@@ -65,6 +65,9 @@ namespace FlightSimulator
         {
             if (lv_charts.SelectedItem != null)
             {
+                plot.InvalidatePlot(true);
+                plotCorrlated.InvalidatePlot(true);
+                linear_reg.InvalidatePlot(true);
                 plot.Title = lv_charts.SelectedItem.ToString();
                 vm.updateList((string)lv_charts.SelectedItem);
             }

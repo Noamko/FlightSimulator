@@ -23,27 +23,28 @@ namespace FlightSimulator
             secondsTocalc = 30;
             fc = FlightController.GetInstance;
             mc = mediaController.GetInstance;
+            fc.PropertyChanged += UpdateMedia;
+        //    Names = fc.Names;
 
+            //Names = new string[] { "aileron", "elevator", "rudder", "flaps", "slats", "speed_brake",
+            //    "engine1_throttle", "engine2_throttle", "engine1_pump", "engine2_pump", "electric1_pump",
+            //    "electric2_pump", "external_power", "apu_generator", "latitude_deg", "longitude_deg", "altitude_ft",
+            //    "roll_deg", "pitch_deg", "heading_deg", "side_slip_deg", "airspeed_kt", "glideslop", "vertical_speed_fps",
+            //    "airspeed_indicator_indicated_speed_kt", "altimeter_indicated-altitude-ft", "altimeter_pressure-alt-ft",
+            //    "attitude-indicator_indicated-pitch-deg", "attitude-indicator_indicated-roll-deg",
+            //    "attitude-indicator_internal-pitch-deg", "attitude-indicator_internal-roll-deg", "encoder_indicated-altitude-ft",
+            //    "encoder_pressure-alt-ft", "gps_indicated-altitude-ft", "gps_indicated-ground-speed-kt", "gps_indicated-vertical-speed", 
+            //    "indicated-heading-deg", "magnetic-compass_indicated-heading-deg", "slip-skid-ball_indicated-slip-skid", "turn-indicator_indicated-turn-rate", 
+            //    "vertical-speed-indicator_indicated-speed-fpm", "engine_rpm" }; //need to store this globally or get dynamically from XML
 
-            Names = new string[] { "aileron", "elevator", "rudder", "flaps", "slats", "speed_brake",
-                "engine1_throttle", "engine2_throttle", "engine1_pump", "engine2_pump", "electric1_pump",
-                "electric2_pump", "external_power", "apu_generator", "latitude_deg", "longitude_deg", "altitude_ft",
-                "roll_deg", "pitch_deg", "heading_deg", "side_slip_deg", "airspeed_kt", "glideslop", "vertical_speed_fps",
-                "airspeed_indicator_indicated_speed_kt", "altimeter_indicated-altitude-ft", "altimeter_pressure-alt-ft",
-                "attitude-indicator_indicated-pitch-deg", "attitude-indicator_indicated-roll-deg",
-                "attitude-indicator_internal-pitch-deg", "attitude-indicator_internal-roll-deg", "encoder_indicated-altitude-ft",
-                "encoder_pressure-alt-ft", "gps_indicated-altitude-ft", "gps_indicated-ground-speed-kt", "gps_indicated-vertical-speed", 
-                "indicated-heading-deg", "magnetic-compass_indicated-heading-deg", "slip-skid-ball_indicated-slip-skid", "turn-indicator_indicated-turn-rate", 
-                "vertical-speed-indicator_indicated-speed-fpm", "engine_rpm" }; //need to store this globally or get dynamically from XML
-
-            this.NotifyPropertyChanged("names");
+         //   this.NotifyPropertyChanged("names");
               datalists = new Dictionary<string, LinkedList<DataPoint>>();
             fc.dataUpdated += Update;
             mc.PropertyChanged += UpdateMedia;
-            for(int i = 0; i < names.Length; i++)
-            {
-                datalists.Add(names[i], new LinkedList<DataPoint>());
-            }
+            //for(int i = 0; i < names.Length; i++)
+            //{
+            //    datalists.Add(names[i], new LinkedList<DataPoint>());
+            //}
             timeStamp = 0;
 
             dc = null;
@@ -92,6 +93,15 @@ namespace FlightSimulator
                 {
                     datalists[names[i]] = new LinkedList<DataPoint>();
                 }
+            }
+            if (sender == fc && e.PropertyName.Equals("Names"))
+            {
+                this.Names = fc.Names;
+                for (int i = 0; i < names.Length; i++)
+                {
+                    datalists.Add(names[i], new LinkedList<DataPoint>());
+                }
+                this.NotifyPropertyChanged("names");
             }
         }
 

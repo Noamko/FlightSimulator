@@ -28,6 +28,13 @@ namespace FlightSimulator
             InitializeComponent();
             flightController = FlightController.GetInstance;
             fileHandler = new FileHandler();
+
+            passData_VM passdata = new passData_VM();
+            airspeed_view.SetVM(passdata);
+            altitude_view.SetVM(passdata);
+            direction_view.SetVM(passdata);
+            yawRollPitch_view.SetVM(passdata);
+            joystick.SetVM(passdata);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -38,11 +45,28 @@ namespace FlightSimulator
             if (res == true)
             {
                 this.IsEnabled = true;
-                flightController.loadCSV(fileHandler.csvPath);
+                string[] names = getNames();
+                flightController.loadCSV(fileHandler.csvPath, names) ;
                 StartFlightGear();
             }
-        }
 
+        }
+        private string[] getNames()
+        {
+            string str = System.IO.File.ReadLines(fileHandler.anomalyCsvPath).First();
+            string[] split = str.Split(",");
+            string[] output = new string[split.Length];
+            for (int i = 0; i < split.Length; i++)
+            {
+                string name = split[i];
+                split[i] = "";
+                if (!output.Contains(name))
+                    output[i] = name;
+                else output[i] = name + "_2";
+            }
+            return output;
+
+        }
 
         public void StartFlightGear()
         {

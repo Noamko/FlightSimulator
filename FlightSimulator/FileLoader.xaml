@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="FileLoader" Height="220" Width="600" WindowStartupLocation="CenterScreen">
+        Title="FileLoader" Height="260" Width="600" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -13,6 +13,7 @@
             <ColumnDefinition Width="auto" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
@@ -34,8 +35,12 @@
         <TextBlock Text="exe file:" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left"  Margin="10,5,0,5" />
         <TextBox x:Name="tb_exePath" Text="{Binding VM_fgPath}" Grid.Row="3" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" />
         <Button x:Name="btn_opebEXE" Content="Open" Grid.Row="3" Grid.Column="2" Margin="5" Click="btn_opebEXE_Click" />
+<!--anomaly detection CSV-->
+        <TextBlock Text="anomaly detection file:" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left"  Margin="10,5,0,5" />
+        <TextBox x:Name="tb_anomaliesPath" Text="{Binding VM_anomalyCsvPath}" Grid.Row="4" Grid.Column="1" Margin="5" IsReadOnly="True" IsEnabled="False" />
+        <Button x:Name="btn_opebANOMALIES" Content="Open" Grid.Row="4" Grid.Column="2" Margin="5" Click="btn_opebANOMALIES_Click"  />
 
         <!--Finish button-->
-        <Button x:Name="btn_submit" Grid.Row="4" Content="Finish" IsEnabled="False" Margin="10" Grid.Column="1" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Click="btn_submit_Click"/>
+        <Button x:Name="btn_submit" Grid.Row="5" Content="Finish" IsEnabled="False" Margin="10" Grid.Column="1" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Width="80" Click="btn_submit_Click"/>
     </Grid>
 </Window>

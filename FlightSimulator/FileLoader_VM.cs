@@ -43,6 +43,12 @@ namespace FlightSimulator
 
             set { fh.csvPath = value; } 
         }
+        public string VM_anomalyCsvPath
+        {
+            get { return fh.anomalyCsvPath; }
+
+            set { fh.anomalyCsvPath = value; }
+        }
 
 
     }
