@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,10 +19,33 @@ namespace FlightSimulator
     /// </summary>
     public partial class JoyStick_view : UserControl
     {
-        passData_VM vm;
+        JoyStick_VM vm;
+        double out_minEle, out_maxEle, out_maxAli, out_minAli;
         public JoyStick_view()
         {
             InitializeComponent();
+            vm = new JoyStick_VM();
+            DataContext = vm;
+            vm.PropertyChanged += Vm_PropertyChanged;
+            out_maxEle = 0;
+            out_minEle = 0;
+            out_maxAli = 0;
+            out_minAli = 0;
+        }
+
+        private double map(double x, double in_min, double in_max, double out_min, double out_max)
+        {
+            return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+        }
+
+        private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if ( e.PropertyName.Equals("positionChanged"))
+            {
+                double xAxis = map(vm.Aliron, -1, 1, 0, cnv.ActualHeight - stick_controller.ActualHeight);
+                double yAxis = map(vm.Elevator, -1, 1, 0, cnv.ActualWidth - stick_controller.ActualWidth);
+                setHeadPoition(xAxis,yAxis);
+            }          
         }
 
         private void JoyStick_Loaded(object sender, RoutedEventArgs e)
@@ -29,15 +53,14 @@ namespace FlightSimulator
             stick_controller.Width = _grid.ActualWidth /10;
             stick_controller.Height = stick_controller.Width;
         }
-        public void SetVM(passData_VM vm)
+
+        public void setHeadPoition(double x, double y)
         {
-            this.vm = vm;
-            DataContext = vm;
-        }
-        public void setHeadPoition(int x, int y)
-        {
-            Canvas.SetLeft(stick_controller, x);
-            Canvas.SetTop(stick_controller, y);
+            //stick_controller.SetValue(Canvas.LeftProperty, x);
+            Dispatcher.BeginInvoke(new Action(() => Canvas.SetLeft(stick_controller, x)));
+            Dispatcher.BeginInvoke(new Action(() => Canvas.SetTop(stick_controller, y)));
+            //Canvas.SetLeft(stick_controller, x);
+            //Canvas.SetTop(stick_controller, y);
         }
     }
 }

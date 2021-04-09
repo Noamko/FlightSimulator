@@ -21,7 +21,7 @@
         <Canvas x:Name="cnv" Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="1" Width="{Binding Height, ElementName=grid_center_height}" Height="{Binding Height, ElementName=grid_center_height}" >
             <Ellipse Width="{Binding ActualWidth, ElementName=cnv}" Height="{Binding ActualHeight, ElementName=cnv}" Fill="DarkSlateGray" />
             <Line x:Name="stick_rod"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Stroke="Black" Fill="Black"/>
-            <Ellipse x:Name="stick_controller"  Fill="Sienna"  />
+            <Ellipse x:Name="stick_controller" Fill="Sienna"  />
         </Canvas>
         <Slider Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Minimum="-1" Maximum="1" Value="{Binding VM_rudder}" />
         <Slider Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical" Minimum="0" Maximum="1" Value="{Binding VM_throttle}"  />
