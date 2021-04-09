@@ -60,6 +60,7 @@ namespace FlightSimulator
                     FirstLine = value;
                     NotifyPropertyChanged("firstLine");
                     NotifyPropertyChanged("currentTime");
+                    NotifyPropertyChanged("getCurrentTimeInSec");
                 }
             }
         }
@@ -71,6 +72,7 @@ namespace FlightSimulator
                 NumberOfLines = value;
                 NotifyPropertyChanged("numberOfLines");
                 NotifyPropertyChanged("totalTime");
+                NotifyPropertyChanged("getTotalTimeInSec");
             }
         }
 
@@ -128,7 +130,7 @@ namespace FlightSimulator
             isRunning = false;
             double gotoLine = ((double)precent / 100) * numberOfLines;
             firstLine = (int)gotoLine;
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(500);//it was 1000 if its not working.
             play();
             NotifyPropertyChanged("goto");
         }

@@ -11,6 +11,7 @@ namespace FlightSimulator
         private string xmlpath;
         private string csvpath;
         private string fgpath;
+        private string anomalycsvPath;
 
         public string xmlPath
         {
@@ -73,6 +74,18 @@ namespace FlightSimulator
             xmlpath = "";
             fgpath = "";
             csvpath = "";
+        }
+
+        public string anomalyCsvPath
+        {
+            get { return anomalycsvPath; }
+
+            set
+            {
+                //      if (!value.Equals(""))
+                this.anomalycsvPath = value;
+                NotifyPropertyChanged("anomalyCsvPath");
+            }
         }
 
         public void NotifyPropertyChanged(string propName)

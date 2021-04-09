@@ -20,12 +20,14 @@ namespace FlightSimulator
     public partial class MediaPlayer : UserControl
     {
         mediaController_VM vm;
+        double oldval;
 
         public MediaPlayer()
         {
             InitializeComponent();
             vm = new mediaController_VM();
             this.DataContext = vm;
+            double oldval =0;
 
         }
 
@@ -61,12 +63,28 @@ namespace FlightSimulator
 
         private void timeline_slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            Trace.WriteLine(timeline_slider.Value);
+                //if(Math.Abs(timeline_slider.Value - oldval)>=2)
+                //{
+                //    double percent = ((timeline_slider.Value / timeline_slider.Maximum) * 100);
+                //    vm.VM_goto((int)percent);
+                //    oldval = timeline_slider.Value;
+                //}
+                //oldval = timeline_slider.Value;
         }
 
-        private void timeline_slider_MouseDown(object sender, MouseButtonEventArgs e)
+        private void timeline_slider_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Trace.WriteLine(timeline_slider.Maximum);
+            //vm.vm_pause();
         }
+
+        private void timeline_slider_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //vm.vm_pause();
+            //system.threading.thread.sleep(100);
+            //double percent = ((timeline_slider.value / timeline_slider.maximum) * 100);
+            //vm.vm_goto((int)percent);
+        }
+
+
     }
 }

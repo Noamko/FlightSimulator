@@ -18,6 +18,7 @@ namespace FlightSimulator
     /// </summary>
     public partial class JoyStick_view : UserControl
     {
+        passData_VM vm;
         public JoyStick_view()
         {
             InitializeComponent();
@@ -28,7 +29,11 @@ namespace FlightSimulator
             stick_controller.Width = _grid.ActualWidth /10;
             stick_controller.Height = stick_controller.Width;
         }
-
+        public void SetVM(passData_VM vm)
+        {
+            this.vm = vm;
+            DataContext = vm;
+        }
         public void setHeadPoition(int x, int y)
         {
             Canvas.SetLeft(stick_controller, x);

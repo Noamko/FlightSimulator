@@ -23,6 +23,10 @@ namespace FlightSimulator
             {
                 NotifyPropertyChanged("VM_getTotalTimeInSec");
             }
+            //if (e.PropertyName == "currentTime")
+            //{
+            //    NotifyPropertyChanged("VM_getCurrentTimeInSec");
+            //}
         }
 
         public void VM_play()
@@ -53,6 +57,8 @@ namespace FlightSimulator
         public string VM_totalTime { get { return media.getTotalTime(); } }
 
         public int VM_getTotalTimeInSec { get { return media.getTotalTimeInMilisecs() / 1000; } }
+
+        public int VM_getCurrentTimeInSec { get { return media.getCurrentTimeInMilisecs() / 1000; }  }
 
         public string VM_currentTime { get { return media.getCurrentTime(); }}
     }
