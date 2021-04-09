@@ -19,20 +19,25 @@ namespace FlightSimulator
     /// </summary>
     public partial class JoyStick_view : UserControl
     {
-        JoyStick_VM vm;
+        passData_VM vm;
         double out_minEle, out_maxEle, out_maxAli, out_minAli;
         public JoyStick_view()
         {
             InitializeComponent();
-            vm = new JoyStick_VM();
-            DataContext = vm;
-            vm.PropertyChanged += Vm_PropertyChanged;
+       //     vm = new JoyStick_VM();
+        //    DataContext = vm;
+         //   vm.PropertyChanged += Vm_PropertyChanged;
             out_maxEle = 0;
             out_minEle = 0;
             out_maxAli = 0;
             out_minAli = 0;
         }
-
+        public void SetVM(passData_VM vm)
+        {
+            this.vm = vm;
+            DataContext = vm;
+            vm.PropertyChanged += Vm_PropertyChanged;
+        }
         private double map(double x, double in_min, double in_max, double out_min, double out_max)
         {
             return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -40,12 +45,12 @@ namespace FlightSimulator
 
         private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if ( e.PropertyName.Equals("positionChanged"))
+            if ( e.PropertyName.Equals("VM_elevator"))
             {
-                double xAxis = map(vm.Aliron, -1, 1, 0, cnv.ActualHeight - stick_controller.ActualHeight);
-                double yAxis = map(vm.Elevator, -1, 1, 0, cnv.ActualWidth - stick_controller.ActualWidth);
+                double xAxis = map(vm.VM_aileron, -1, 1, 0, cnv.ActualHeight - stick_controller.ActualHeight);
+                double yAxis = map(vm.VM_elevator, -1, 1, 0, cnv.ActualWidth - stick_controller.ActualWidth);
                 setHeadPoition(xAxis,yAxis);
-            }          
+           }          
         }
 
         private void JoyStick_Loaded(object sender, RoutedEventArgs e)

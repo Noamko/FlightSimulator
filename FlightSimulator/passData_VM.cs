@@ -17,7 +17,10 @@ namespace FlightSimulator
         float sideSlipDeg;
         float throttle; //0-1
         float rudder; //-1-1
-        
+        float aileron;
+        float elevator;
+
+
 
 
         public passData_VM()
@@ -32,6 +35,8 @@ namespace FlightSimulator
             VM_SideSlipDeg = 0;
             VM_throttle = 0;
             VM_rudder = 0;
+            VM_aileron = 0;
+            VM_elevator = 0;
 
         }
         public void NotifyPropertyChanged(string propName)
@@ -50,6 +55,8 @@ namespace FlightSimulator
             VM_SideSlipDeg = float.Parse(e.GetData("side-slip-deg"));
             VM_throttle = float.Parse(e.GetData("throttle"));
             VM_rudder = float.Parse(e.GetData("rudder"));
+            VM_aileron = float.Parse(e.GetData("aileron"));
+            VM_elevator = float.Parse(e.GetData("elevator"));
             //NotifyPropertyChanged("VM_Airspeed");
 
         }
@@ -159,6 +166,31 @@ namespace FlightSimulator
             }
         }
 
+        public float VM_elevator
+        {
+            get
+            {
+                return elevator;
+            }
+            set
+            {
 
+                elevator = value;
+                NotifyPropertyChanged("VM_elevator");
+            }
+        }
+        public float VM_aileron
+        {
+            get
+            {
+                return aileron;
+            }
+            set
+            {
+
+                aileron = value;
+                NotifyPropertyChanged("VM_aileron");
+            }
+        }
     }
 }
