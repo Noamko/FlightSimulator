@@ -4528,19 +4528,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\noamk\\.nuget\\packages\\": {}
+    "C:\\Users\\nalig\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
+      "projectUniqueName": "C:\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
       "projectName": "FlightSimulator",
-      "projectPath": "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
-      "packagesPath": "C:\\Users\\noamk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\obj\\",
+      "projectPath": "C:\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
+      "packagesPath": "C:\\Users\\nalig\\.nuget\\packages\\",
+      "outputPath": "C:\\FlightSimulator\\FlightSimulator\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\noamk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nalig\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
