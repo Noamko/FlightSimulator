@@ -29,9 +29,6 @@ namespace FlightSimulator
         [DllImport(dll_path, EntryPoint = "getDesciption")]
         static extern IntPtr getDiscription(IntPtr v, int index);
 
-        [DllImport(dll_path, EntryPoint = "CHECK")]
-        static extern int CHECK();
-
         [DllImport(dll_path, EntryPoint = "createString")]
         static extern IntPtr createString(int len);
 
@@ -43,6 +40,12 @@ namespace FlightSimulator
 
         [DllImport(dll_path, EntryPoint = "len")]
         static extern int len(IntPtr sw);
+
+        [DllImport(dll_path, EntryPoint = "getAnomalyCount")]
+        static extern int getAnomalyCount(IntPtr vw);
+
+        [DllImport(dll_path, EntryPoint = "getFunc")]
+        static extern IntPtr getFunc(IntPtr vw,int index);
 
         IntPtr detector;
         IntPtr AnomalyReportVector;
@@ -68,7 +71,6 @@ namespace FlightSimulator
             dispose(sw_filename);
             dispose(sw_names);
         }
-
         public void Detect(string names, string filename)
         {
             IntPtr sw_filename = sw_string(filename);
@@ -93,6 +95,21 @@ namespace FlightSimulator
         public int GetTimeStep(int index)
         {
             return getTimeStep(AnomalyReportVector, index);
+        }
+        public int AnomalyCount()
+        {
+            return getAnomalyCount(AnomalyReportVector);
+        }
+
+        public string GetFunction(int index)
+        {
+            IntPtr sw = getFunc(detector, index); string s = "";
+            for (int i = 0; i < len(sw); i++)
+            {
+                s += getChar(sw, i);
+            }
+            dispose(sw);
+            return s;
         }
 
         ~AnomalyDetector()

@@ -5,30 +5,53 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulator"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="200" d:DesignWidth="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"  x:Name="_firstCol"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Ellipse Canvas.Left="50" Canvas.Top="50" Width="{Binding ActualWidth, ElementName=_firstCol}" Height="{Binding ActualWidth, ElementName=_firstCol}" Stroke="Black" StrokeThickness="1">
+        <Ellipse Canvas.Left="50" Canvas.Top="50" Width="200" Height="200" Stroke="Black" StrokeThickness="1">
+            <Ellipse.RenderTransform>
+                <RotateTransform Angle="{Binding VM_RollDeg}" CenterX="100" CenterY="100"  />
+            </Ellipse.RenderTransform>
             <Ellipse.Fill>
-                <LinearGradientBrush StartPoint="0,0.75" EndPoint="0,0">
-                    <GradientStop Color="SkyBlue" Offset="0.3333" />
+                <LinearGradientBrush x:Name="pfd_pitch" StartPoint="0,0" EndPoint="0,1.5">
+                    <GradientStop Color="SkyBlue" Offset="0.333" />
                     <GradientStop Color="SandyBrown" Offset="0.333" />
                 </LinearGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
         <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{Binding VM_Altitude}" />
-            <TextBlock Grid.Row="1" Text="{Binding VM_Airspeed}" />
-            <TextBlock Grid.Row="2" Text="{Binding VM_HeadingDeg}" />
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Altitude: " FontSize="16" />
+                    <TextBlock Grid.Row="0" Text="{Binding VM_Altitude}" FontSize="16" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Air Speed: " FontSize="16" />
+                    <TextBlock Grid.Row="1" Text="{Binding VM_Airspeed}" FontSize="16" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="heading: " FontSize="16" />
+                    <TextBlock Grid.Row="2" Text="{Binding VM_HeadingDeg}" FontSize="16" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Roll: " FontSize="16" />
+                    <TextBlock Grid.Row="2" Text="{Binding VM_RollDeg}" FontSize="16" />
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Pitch: " FontSize="16" />
+                    <TextBlock Grid.Row="2" Text="{Binding VM_PitchDeg}"  FontSize="16"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="2">
+                    <TextBlock Text="Yaw: "  FontSize="16"/>
+                    <TextBlock Grid.Row="2" Text="{Binding VM_SideSlipDeg}"  FontSize="16"/>
+                </StackPanel>
+            </StackPanel>
             
         </Grid>
     </Grid>

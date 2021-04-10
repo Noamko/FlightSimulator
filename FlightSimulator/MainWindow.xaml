@@ -31,10 +31,6 @@
                 </Grid.ColumnDefinitions>
                 <local:JoyStick_view x:Name="joystick"  Grid.Row="1" Grid.Column="1" Background="White" />
                 <local:DataViewer x:Name="data_viewer" Grid.Column="0" Grid.ColumnSpan="2" />
-                <local:showAirspeed x:Name="airspeed_view" HorizontalAlignment="Left" Height="110" Margin="124,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130"/>
-                <local:showAltitude x:Name="altitude_view" HorizontalAlignment="Left" Height="110" Margin="-1,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115"/>
-                <local:showDirection x:Name="direction_view" HorizontalAlignment="Left" Height="100" Margin="4,1,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110"/>
-                <local:showYawRollPitch x:Name="yawRollPitch_view" HorizontalAlignment="Left" Height="100" Margin="129,6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="125"/>
             </Grid>
         </GroupBox>
     </Grid>

@@ -32,10 +32,6 @@ namespace FlightSimulator
 
             passData_VM passdata = new passData_VM();
             data_viewer.SetVM(passdata);
-            airspeed_view.SetVM(passdata);
-            altitude_view.SetVM(passdata);
-            direction_view.SetVM(passdata);
-            yawRollPitch_view.SetVM(passdata);
             joystick.SetVM(passdata);
         }
 
