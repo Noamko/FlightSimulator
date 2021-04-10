@@ -17,3 +17,12 @@ FlightSimulator/obj/x64/Release/netcoreapp3.1/FlightSimulator.designer.runtimeco
 FlightSimulator/obj/x64/Release/netcoreapp3.1/JoyStick_view.g.i.cs
 FlightSimulator/obj/x64/Release/netcoreapp3.1/MainWindow.g.i.cs
 FlightSimulator/obj/x64/Release/netcoreapp3.1/MediaPlayer.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/showYawRollPitch.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/showDirection.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/showAltitude.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/showAirspeed.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/MainWindow.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/GeneratedInternalTypeHelper.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/FlightSimulator_MarkupCompile.i.lref
+FlightSimulator/obj/x64/Release/netcoreapp3.1/FileLoader.g.i.cs
+FlightSimulator/obj/x64/Release/netcoreapp3.1/App.g.i.cs
