@@ -4,4 +4,8 @@ FC:\FlightSimulator\FlightSimulator\FileLoader.xaml;;
 FC:\FlightSimulator\FlightSimulator\JoyStick_view.xaml;;
 FC:\FlightSimulator\FlightSimulator\MainWindow.xaml;;
 FC:\FlightSimulator\FlightSimulator\MediaPlayer.xaml;;
+FC:\FlightSimulator\FlightSimulator\showAirspeed.xaml;;
+FC:\FlightSimulator\FlightSimulator\showAltitude.xaml;;
+FC:\FlightSimulator\FlightSimulator\showDirection.xaml;;
+FC:\FlightSimulator\FlightSimulator\showYawRollPitch.xaml;;
 

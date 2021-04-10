@@ -31,7 +31,7 @@ namespace FlightSimulator
 
         private void checkFinish()
         {
-            if (vm.VM_csvPath != "" && vm.VM_xmlPath != "" && vm.VM_fgPath != "")
+            if (vm.VM_csvPath != "" && vm.VM_xmlPath != "" && vm.VM_fgPath != "" && vm.VM_anomalyCsvPath != "")
             {
                 btn_submit.IsEnabled = true;
             }
@@ -84,6 +84,20 @@ namespace FlightSimulator
         {
             this.DialogResult = true;
             this.Close();
+        }
+
+        private void btn_opebANOMALIES_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDlg = new Microsoft.Win32.OpenFileDialog();
+            openFileDlg.DefaultExt = ".csv";
+            openFileDlg.Filter = "Executable Files (*.csv)|*.csv";
+            Nullable<bool> result = openFileDlg.ShowDialog();
+            if (result == true)
+            {
+                tb_anomaliesPath.Text = openFileDlg.FileName;
+                vm.VM_anomalyCsvPath = openFileDlg.FileName; ;
+                checkFinish();
+            }
         }
     }
 }

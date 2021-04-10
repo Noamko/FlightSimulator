@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\FlightSimulator\FlightSimulator\App.xaml
-51725360621
+9247829812
 
-271099959681
+32-2015178246
 194366557712
-FileLoader.xaml;JoyStick_view.xaml;LineChart_view.xaml;MainWindow.xaml;MediaPlayer.xaml;
+FileLoader.xaml;JoyStick_view.xaml;LineChart_view.xaml;MainWindow.xaml;MediaPlayer.xaml;showAirspeed.xaml;showAltitude.xaml;showDirection.xaml;showYawRollPitch.xaml;
 
 False
 

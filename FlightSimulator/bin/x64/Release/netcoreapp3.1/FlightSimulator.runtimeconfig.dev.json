@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\noamk\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\noamk\\.nuget\\packages"
+      "C:\\Users\\yuval\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\yuval\\.nuget\\packages"
     ]
   }
 }

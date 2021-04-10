@@ -23,8 +23,8 @@
             <Line x:Name="stick_rod"  StrokeStartLineCap="Round" StrokeEndLineCap="Round" Stroke="Black" Fill="Black"/>
             <Ellipse x:Name="stick_controller" Fill="Sienna"  />
         </Canvas>
-        <Slider Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" />
-        <Slider Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical"  />
+        <Slider Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Minimum="-1" Maximum="1" Value="{Binding VM_rudder}" />
+        <Slider Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical" Minimum="0" Maximum="1" Value="{Binding VM_throttle}"  />
         <Slider Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical" />
     </Grid>
 </UserControl>
