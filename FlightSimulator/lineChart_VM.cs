@@ -6,18 +6,16 @@ using System.Text;
 
 namespace FlightSimulator
 {
-    class lineChart_VM : INotifyPropertyChanged
+    class LineChart_VM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        private lineChart_model model;
+        private LineChart_model model;
         private string name;
 
-        DataPoint p1;
-        DataPoint p2;
-        public lineChart_VM()
+        public LineChart_VM()
         {
             name = "";
-            model = new lineChart_model();
+            model = new LineChart_model();
             model.PropertyChanged += delegate (Object sender, System.ComponentModel.PropertyChangedEventArgs e) {
                 NotifyPropertyChanged("VM_" + e.PropertyName);
             };
@@ -30,7 +28,7 @@ namespace FlightSimulator
 
         public string[] VM_names
         {
-            get { return model.names; }
+            get { return model.Names; }
         }
 
 
@@ -40,7 +38,7 @@ namespace FlightSimulator
             {
                 if (!name.Equals(""))
                 {
-                    string corralted = model.getCorralatedName(name);
+                    string corralted = model.GetCorralatedName(name);
                     VM_CorralatedName = corralted;
                     VM_CorralatedList = model.getList(corralted);
                     NotifyPropertyChanged("VM_CorralatedList");
@@ -58,11 +56,11 @@ namespace FlightSimulator
         }
 
 
-        public void updateList(string newName)
+        public void UpdateList(string newName)
         {
             name = newName;
             /// updates the correlative graph
-            string corralted = model.getCorralatedName(name);
+            string corralted = model.GetCorralatedName(name);
             if (!corralted.Equals(""))
             {
                 VM_CorralatedName = corralted;

@@ -26,7 +26,6 @@ C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreap
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\x64\Release\netcoreapp3.1\OxyPlot.dll
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\bin\x64\Release\netcoreapp3.1\OxyPlot.Wpf.dll
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\FlightSimulator.csproj.CopyComplete
-C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\FlightSimulator.csprojAssemblyReference.cache
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\JoyStick_view.g.cs
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\JoyStick_view.baml
 C:\Users\yuval\source\repos\FlightSimulator\FlightSimulator\bin\x64\Release\netcoreapp3.1\FlightSimulator.exe
@@ -66,3 +65,14 @@ C:\Users\yuval\source\repos\FlightSimulator\FlightSimulator\obj\x64\Release\netc
 C:\Users\yuval\source\repos\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showDirection.baml
 C:\Users\yuval\source\repos\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showYawRollPitch.g.cs
 C:\Users\yuval\source\repos\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showYawRollPitch.baml
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showAirspeed.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showAltitude.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showDirection.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showYawRollPitch.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showAirspeed.baml
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showAltitude.baml
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showDirection.baml
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\showYawRollPitch.baml
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\FlightSimulator.csprojAssemblyReference.cache
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\DataViewer.g.cs
+C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\DataViewer.baml

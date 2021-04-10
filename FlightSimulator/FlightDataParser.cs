@@ -15,8 +15,6 @@ namespace FlightSimulator
        
         private string[] Names { get;  set; }
 
-     //   string[] Names;
-        //TODO: are this strings should be stored globaly?
         public FlightDataParser(string csv_file, string[] names)
         {
             Names = names;

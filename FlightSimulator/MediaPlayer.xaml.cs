@@ -27,7 +27,6 @@ namespace FlightSimulator
             InitializeComponent();
             vm = new mediaController_VM();
             this.DataContext = vm;
-            double oldval =0;
 
         }
 

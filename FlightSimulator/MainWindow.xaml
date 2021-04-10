@@ -30,9 +30,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <local:JoyStick_view x:Name="joystick"  Grid.Row="1" Grid.Column="1" Background="White" />
-                <TextBlock Text="Some Data" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
-                <TextBlock Grid.Row="1" Text="Some Data" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
-                <TextBlock Grid.Column="1" Text="Some Data" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                <local:DataViewer x:Name="data_viewer" Grid.Column="0" Grid.ColumnSpan="2" />
                 <local:showAirspeed x:Name="airspeed_view" HorizontalAlignment="Left" Height="110" Margin="124,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130"/>
                 <local:showAltitude x:Name="altitude_view" HorizontalAlignment="Left" Height="110" Margin="-1,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115"/>
                 <local:showDirection x:Name="direction_view" HorizontalAlignment="Left" Height="100" Margin="4,1,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110"/>

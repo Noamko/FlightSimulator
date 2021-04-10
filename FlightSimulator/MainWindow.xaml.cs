@@ -30,6 +30,7 @@ namespace FlightSimulator
             fileHandler = new FileHandler();
 
             passData_VM passdata = new passData_VM();
+            data_viewer.SetVM(passdata);
             airspeed_view.SetVM(passdata);
             altitude_view.SetVM(passdata);
             direction_view.SetVM(passdata);
@@ -49,7 +50,6 @@ namespace FlightSimulator
                 flightController.loadCSV(fileHandler.csvPath, names) ;
                 StartFlightGear();
             }
-
         }
         private string[] getNames()
         {
@@ -65,7 +65,6 @@ namespace FlightSimulator
                 else output[i] = name + "_2";
             }
             return output;
-
         }
 
         public void StartFlightGear()

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\yuval\\source\\repos\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj": {}
+    "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\yuval\\source\\repos\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj": {
+    "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\yuval\\source\\repos\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
+        "projectUniqueName": "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
         "projectName": "FlightSimulator",
-        "projectPath": "C:\\Users\\yuval\\source\\repos\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
-        "packagesPath": "C:\\Users\\yuval\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\yuval\\source\\repos\\FlightSimulator\\FlightSimulator\\obj\\",
+        "projectPath": "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\FlightSimulator.csproj",
+        "packagesPath": "C:\\Users\\noamk\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\noamk\\Desktop\\FlightSimulator\\FlightSimulator\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\yuval\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\noamk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "OxyPlot.Wpf": {
               "target": "Package",
@@ -61,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

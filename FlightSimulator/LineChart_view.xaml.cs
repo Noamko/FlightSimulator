@@ -12,12 +12,12 @@ namespace FlightSimulator
     /// </summary>
     public partial class LineChart_view : UserControl
     {
-        lineChart_VM vm;
+        LineChart_VM vm;
 
         public LineChart_view()
         {
             InitializeComponent();
-            vm = new lineChart_VM();
+            vm = new LineChart_VM();
             DataContext = vm;
             vm.PropertyChanged += Update;
           //  PlotModel pm = new PlotModel();
@@ -69,7 +69,7 @@ namespace FlightSimulator
                 plotCorrlated.InvalidatePlot(true);
                 linear_reg.InvalidatePlot(true);
                 plot.Title = lv_charts.SelectedItem.ToString();
-                vm.updateList((string)lv_charts.SelectedItem);
+                vm.UpdateList((string)lv_charts.SelectedItem);
             }
         }
     }

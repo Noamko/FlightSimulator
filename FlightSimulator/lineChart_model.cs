@@ -6,19 +6,19 @@ using System.Text;
 
 namespace FlightSimulator
 {
-    class lineChart_model : INotifyPropertyChanged
+    class LineChart_model : INotifyPropertyChanged
     {
         FlightController fc;
         mediaController mc;
-        string[] Names;
-         Dictionary<string, LinkedList<DataPoint>> datalists;
+        string[] _names;
+        Dictionary<string, LinkedList<DataPoint>> datalists;
         public event PropertyChangedEventHandler PropertyChanged;
         int timeStamp;
         int secondsTocalc;
 
         DataCalculations dc;
 
-        public lineChart_model()
+        public LineChart_model()
         {
             secondsTocalc = 30;
             fc = FlightController.GetInstance;
@@ -63,9 +63,9 @@ namespace FlightSimulator
             {
                 dc = fc.getDataCalculations;
             }
-            for(int i=0;i<names.Length;i++)
+            for(int i=0;i<Names.Length;i++)
             {
-                       datalists[names[i]].AddLast(new DataPoint(mc.getCurrentTimeInMilisecs(),float.Parse(e.GetData(names[i]))));            }
+                       datalists[Names[i]].AddLast(new DataPoint(mc.getCurrentTimeInMilisecs(),float.Parse(e.GetData(Names[i]))));            }
                 NotifyPropertyChanged("list");
 
             //NotifyPropertyChanged("CorralatedList");
@@ -73,9 +73,9 @@ namespace FlightSimulator
             timeStamp++;
         }
 
-        public string []names
+        public string []Names
         {
-            get { return Names; }
+            get { return _names; }
         }
 
         public LinkedList<DataPoint> getList(string name)
@@ -89,29 +89,27 @@ namespace FlightSimulator
         {
             if(sender == mc && e.PropertyName.Equals("goto"))
             {
-                for (int i = 0; i < names.Length; i++)
+                for (int i = 0; i < Names.Length; i++)
                 {
-                    datalists[names[i]] = new LinkedList<DataPoint>();
+                    datalists[Names[i]] = new LinkedList<DataPoint>();
                 }
             }
             if (sender == fc && e.PropertyName.Equals("Names"))
             {
-                this.Names = fc.Names;
-                for (int i = 0; i < names.Length; i++)
+                this._names = fc.Names;
+                for (int i = 0; i < Names.Length; i++)
                 {
-                    datalists.Add(names[i], new LinkedList<DataPoint>());
+                    datalists.Add(Names[i], new LinkedList<DataPoint>());
                 }
                 this.NotifyPropertyChanged("names");
             }
         }
 
-
-
-        public string getCorralatedName(string name)
+        public string GetCorralatedName(string name)
         {
             if (dc != null)
             {
-                return dc.getMaxPearsonName(name);
+                return dc.GetMaxPearsonName(name);
             }
             return "";
         }
@@ -121,7 +119,7 @@ namespace FlightSimulator
         {
             if (dc != null)
             {
-                string nameCor = dc.getMaxPearsonName(name);
+                string nameCor = dc.GetMaxPearsonName(name);
                 Tuple<string, string> lineAandB = dc.linear_reg(name, nameCor);
                 float a = float.Parse(lineAandB.Item1);
                 float b = float.Parse(lineAandB.Item2);
@@ -168,7 +166,7 @@ namespace FlightSimulator
             int beginLine = beginTime / interval;
             int endLine = endTime / interval;
             string[] data = fc.getParser.GetDataByName(name);
-            string[] dataCorralated = fc.getParser.GetDataByName(dc.getMaxPearsonName(name));
+            string[] dataCorralated = fc.getParser.GetDataByName(dc.GetMaxPearsonName(name));
             LinkedList<DataPoint> list = new LinkedList<DataPoint>();
             for(int i = beginLine;i<endLine;i++)
             {

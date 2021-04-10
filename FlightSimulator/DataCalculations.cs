@@ -209,7 +209,7 @@ namespace FlightSimulator
 
 
 
-        public string getMaxPearsonName(string name)
+        public string GetMaxPearsonName(string name)
         {
             if (!name.Equals(""))
                 return dict[name].MaxPearsonName;
