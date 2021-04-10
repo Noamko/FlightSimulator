@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="Flight Simulator" Height="500" Width="1100" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Flight Simulator" Height="600" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -22,7 +22,7 @@
         <GroupBox Grid.Column="1" Margin="5">
             <Grid Grid.Row="0" Grid.Column="1" Margin="5" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>

@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulator"
              mc:Ignorable="d" 
-             d:DesignHeight="200" d:DesignWidth="400">
-    <Grid>
+             d:DesignHeight="200" d:DesignWidth="400"
+             x:Name="uc">
+    <Grid x:Name="_grid" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"  x:Name="_firstCol"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Ellipse Canvas.Left="50" Canvas.Top="50" Width="200" Height="200" Stroke="Black" StrokeThickness="1">
+        <Ellipse x:Name="ecc" Canvas.Left="50" Canvas.Top="50"  Stroke="Black" StrokeThickness="1"  MinWidth="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" MinHeight="{Binding ActualWidth, RelativeSource={RelativeSource Self}}">
             <Ellipse.RenderTransform>
-                <RotateTransform Angle="{Binding VM_RollDeg}" CenterX="100" CenterY="100"  />
+                <RotateTransform x:Name="rotate_trans" Angle="{Binding VM_RollDeg}"  />
             </Ellipse.RenderTransform>
             <Ellipse.Fill>
                 <LinearGradientBrush x:Name="pfd_pitch" StartPoint="0,0" EndPoint="0,1.5">
@@ -22,8 +23,9 @@
                 </LinearGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <Grid Grid.Column="1">
-            <StackPanel Orientation="Vertical">
+        <Rectangle VerticalAlignment="Center" Height="1" Fill="Black" Opacity="0.2" />
+        <Grid Grid.Column="1" Margin="5">
+            <StackPanel Orientation="Vertical" Margin="10">
                 <StackPanel Orientation="Horizontal" Margin="2">
                     <TextBlock Text="Altitude: " FontSize="16" />
                     <TextBlock Grid.Row="0" Text="{Binding VM_Altitude}" FontSize="16" />
@@ -52,7 +54,6 @@
                     <TextBlock Grid.Row="2" Text="{Binding VM_SideSlipDeg}"  FontSize="16"/>
                 </StackPanel>
             </StackPanel>
-            
         </Grid>
     </Grid>
 </UserControl>

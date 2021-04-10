@@ -29,12 +29,15 @@ namespace FlightSimulator
 
         private void Fc_dataUpdated(object sender, FlightControllerEventArgs e)
         {
-            System.Diagnostics.Trace.WriteLine(e.GetData("pitch-deg"));
-            Dispatcher.BeginInvoke(new Action(() => setPitch(float.Parse(e.GetData("pitch-deg"))))); ;
+            Dispatcher.BeginInvoke(new Action(() => {
+                rotate_trans.CenterX = ecc.ActualWidth / 2;
+                rotate_trans.CenterY = ecc.ActualHeight / 2;
+                setPitch(float.Parse(e.GetData("pitch-deg")));
+            }));
         }
         private void setPitch(float val)
         {
-            pfd_pitch.EndPoint = new Point(0, map(val, -45, 45, 3, 0));
+            pfd_pitch.EndPoint = new Point(0, map(val, -45, 45, 0, 3));
         }
         public void SetVM(passData_VM vm)
         {
