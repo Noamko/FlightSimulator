@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace FlightSimulator
 {
@@ -53,18 +54,54 @@ namespace FlightSimulator
         }
         private string[] getNames()
         {
-            string str = System.IO.File.ReadLines(fileHandler.anomalyCsvPath).First();
-            string[] split = str.Split(",");
-            string[] output = new string[split.Length];
-            for (int i = 0; i < split.Length; i++)
+            List<String> strings = new List<String>();
+            XmlReaderSettings settings = new XmlReaderSettings();
+            settings.IgnoreWhitespace = true;
+            settings.DtdProcessing = DtdProcessing.Parse;
+            using (XmlReader reader = XmlReader.Create(fileHandler.xmlPath, settings))
             {
-                string name = split[i];
-                split[i] = "";
-                if (!output.Contains(name))
-                    output[i] = name;
-                else output[i] = name + "_2";
+                while (reader.Read())
+                {
+                    int index, counter;
+                    if (reader.Name.Equals("input"))
+                    {
+                        break;
+                    }
+                    if (reader.Name.Equals("name") && reader.NodeType.ToString().Equals("Element"))
+                    {
+                        if (!reader.EOF)
+                        {
+                            reader.Read();
+                            counter = 0;
+                            index = checkIfContains(strings, reader.Value);
+                            while (index != -1)
+                            {
+                                counter++;
+                                index = checkIfContains(strings, reader.Value + counter.ToString());
+                            }
+                            if (counter == 0)
+                            {
+                                strings.Add(reader.Value);
+                            }
+                            else
+                            {
+                                strings.Add(reader.Value + counter.ToString());
+                            }
+                        }
+                    }
+                }
             }
+            string[] output = strings.ToArray();
             return output;
+        }
+        private int checkIfContains(List<string> list, string element)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].Contains(element))
+                    return i;
+            }
+            return -1;
         }
 
         public void StartFlightGear()
