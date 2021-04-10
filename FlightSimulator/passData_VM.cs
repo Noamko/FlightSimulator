@@ -20,9 +20,6 @@ namespace FlightSimulator
         float aileron;
         float elevator;
 
-
-
-
         public passData_VM()
         {
             controller = FlightSimulator.FlightController.GetInstance;

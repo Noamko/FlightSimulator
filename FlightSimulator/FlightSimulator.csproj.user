@@ -16,18 +16,6 @@
     <Compile Update="MediaPlayer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="showAirspeed.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="showAltitude.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="showDirection.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="showYawRollPitch.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="FileLoader.xaml">
@@ -43,18 +31,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MediaPlayer.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="showAirspeed.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="showAltitude.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="showDirection.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="showYawRollPitch.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
