@@ -39,3 +39,5 @@ FlightSimulator/bin/x64/Release/netcoreapp3.1/FlightSimulator.pdb
 FlightSimulator/bin/x64/Release/netcoreapp3.1/FlightSimulator.dll
 .vs/FlightSimulator/v16/.suo
 .vs/FlightSimulator/DesignTimeBuild/.dtbcache.v2
+.vs/FlightSimulator/v16/.suo
+*.v2
