@@ -68,4 +68,3 @@ C:\Users\yuval\source\repos\FlightSimulator\FlightSimulator\obj\x64\Release\netc
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\FlightSimulator.csprojAssemblyReference.cache
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\DataViewer.g.cs
 C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\DataViewer.baml
-C:\Users\noamk\Desktop\FlightSimulator\FlightSimulator\obj\x64\Release\netcoreapp3.1\FlightSimulator.csproj.ResolveComReference.cache

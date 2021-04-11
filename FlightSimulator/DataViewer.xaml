@@ -7,14 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="400"
              x:Name="uc">
-    <Grid x:Name="_grid" >
+    <Grid x:Name="_grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"  x:Name="_firstCol"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Ellipse x:Name="ecc" Canvas.Left="50" Canvas.Top="50"  Stroke="Black" StrokeThickness="1"  MinWidth="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" MinHeight="{Binding ActualWidth, RelativeSource={RelativeSource Self}}">
+        <Ellipse  x:Name="ecc" Canvas.Left="50" Canvas.Top="50"  Stroke="Black" StrokeThickness="1"  MinWidth="{Binding ActualHeight, RelativeSource={RelativeSource Self}}" MinHeight="{Binding ActualWidth, RelativeSource={RelativeSource Self}}">
             <Ellipse.RenderTransform>
-                <RotateTransform x:Name="rotate_trans" Angle="{Binding VM_RollDeg}"  />
+                <RotateTransform x:Name="rotate_trans"  />
             </Ellipse.RenderTransform>
             <Ellipse.Fill>
                 <LinearGradientBrush x:Name="pfd_pitch" StartPoint="0,0" EndPoint="0,1.5">
@@ -23,6 +23,7 @@
                 </LinearGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
+        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Level line"  Margin="0,0,0,11"/>
         <Rectangle VerticalAlignment="Center" Height="1" Fill="Black" Opacity="0.2" />
         <Grid Grid.Column="1" Margin="5">
             <StackPanel Orientation="Vertical" Margin="10">

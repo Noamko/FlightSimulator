@@ -32,6 +32,7 @@ namespace FlightSimulator
             Dispatcher.BeginInvoke(new Action(() => {
                 rotate_trans.CenterX = ecc.ActualWidth / 2;
                 rotate_trans.CenterY = ecc.ActualHeight / 2;
+                rotate_trans.Angle = -1*float.Parse(e.GetData("roll-deg"));
                 setPitch(float.Parse(e.GetData("pitch-deg")));
             }));
         }
