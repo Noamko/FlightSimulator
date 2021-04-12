@@ -30,14 +30,6 @@ namespace FlightSimulator
 
         }
 
-   //     private void Controller_dataUpdated(object sender, FlightControllerEventArgs e)
-  //      {
-    //        this.startling_line = controller.startingLine;
-
-      //      System.Diagnostics.Trace.WriteLine(e.GetData("aileron"));
-
-
-
         private void btn_play_Click(object sender, RoutedEventArgs e)
         {
             vm.VM_play();
@@ -71,19 +63,15 @@ namespace FlightSimulator
                 //oldval = timeline_slider.Value;
         }
 
-        private void timeline_slider_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+
+        private void btn_gotostar_Click(object sender, RoutedEventArgs e)
         {
-            //vm.vm_pause();
+            vm.VM_goto(0);
         }
 
-        private void timeline_slider_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void btn_gotoend_Click(object sender, RoutedEventArgs e)
         {
-            //vm.vm_pause();
-            //system.threading.thread.sleep(100);
-            //double percent = ((timeline_slider.value / timeline_slider.maximum) * 100);
-            //vm.vm_goto((int)percent);
+            vm.VM_goto(100);
         }
-
-
     }
 }

@@ -5,36 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightSimulator"
         mc:Ignorable="d"
-        Title="Flight Simulator" Height="500" Width="1100" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+        Title="Flight Simulator" Height="450" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="600*" />
+            <ColumnDefinition Width="493*" />
+            <ColumnDefinition Width="107*"/>
         </Grid.ColumnDefinitions>
-        <GroupBox Grid.Row="0" Margin="5">
+        <GroupBox Grid.Row="0" Margin="5,5,5,5">
             <local:LineChart_view Grid.Row="0" VerticalAlignment="Stretch" Margin="5" />
         </GroupBox>
-        <local:MediaPlayer x:Name="mp" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center"  />
-        <GroupBox Grid.Column="1" Margin="5">
+        <local:MediaPlayer x:Name="mp" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="122,0,0,0"  />
+        <GroupBox Grid.Column="1" Margin="5,5,5,5" Grid.ColumnSpan="2">
             <Grid Grid.Row="0" Grid.Column="1" Margin="5" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <local:JoyStick_view x:Name="joystick"  Grid.Row="1" Grid.Column="1" Background="White" />
-                <local:DataViewer x:Name="data_viewer" Grid.Column="0" Grid.ColumnSpan="2" />
-                <local:showAirspeed x:Name="airspeed_view" HorizontalAlignment="Left" Height="110" Margin="124,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="130"/>
-                <local:showAltitude x:Name="altitude_view" HorizontalAlignment="Left" Height="110" Margin="-1,101,0,0" Grid.Row="1" VerticalAlignment="Top" Width="115"/>
-                <local:showDirection x:Name="direction_view" HorizontalAlignment="Left" Height="100" Margin="4,1,0,0" Grid.Row="1" VerticalAlignment="Top" Width="110"/>
-                <local:showYawRollPitch x:Name="yawRollPitch_view" HorizontalAlignment="Left" Height="100" Margin="129,6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="125"/>
+                <local:AnomalyUC />
             </Grid>
         </GroupBox>
     </Grid>

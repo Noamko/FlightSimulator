@@ -55,8 +55,6 @@ namespace FlightSimulator
 
         private void JoyStick_Loaded(object sender, RoutedEventArgs e)
         {
-            stick_controller.Width = _grid.ActualWidth /10;
-            stick_controller.Height = stick_controller.Width;
         }
 
         public void setHeadPoition(double x, double y)
@@ -64,8 +62,6 @@ namespace FlightSimulator
             //stick_controller.SetValue(Canvas.LeftProperty, x);
             Dispatcher.BeginInvoke(new Action(() => Canvas.SetLeft(stick_controller, x)));
             Dispatcher.BeginInvoke(new Action(() => Canvas.SetTop(stick_controller, y)));
-            //Canvas.SetLeft(stick_controller, x);
-            //Canvas.SetTop(stick_controller, y);
         }
     }
 }

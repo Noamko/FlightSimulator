@@ -11,15 +11,17 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <Button x:Name="btn_gotostar" Content="&lt;&lt;" Margin="2" Click="btn_gotostar_Click"  />
             <Button x:Name="btn_play" Content="Play" Grid.Row="1" Margin="5"  Click="btn_play_Click" />
             <Button x:Name="btn_pause" Content="Pause" Grid.Row="1" Margin="5"  Click="btn_pause_Click" />
+            <Button x:Name="btn_gotoend" Content="&gt;&gt;" Margin="2" Click="btn_gotoend_Click" />
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <TextBlock x:Name="txt_totalTime" Text="{Binding VM_totalTime}" FontSize="18" Margin="5" />
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <TextBlock x:Name="txt_currebtTime" Text="{Binding VM_currentTime}" FontSize="18" Margin="5" />
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
             <StackPanel VerticalAlignment="Center" Orientation="Horizontal" Margin="5">
-                <Slider x:Name="timeline_slider" Width="300" Minimum="0" Value="{Binding VM_getCurrentTimeInSec , Mode=OneWay}" Maximum="{Binding VM_getTotalTimeInSec , Mode=OneWay}"  MouseLeftButtonDown="timeline_slider_MouseLeftButtonDown" IsMoveToPointEnabled="True" ValueChanged="timeline_slider_ValueChanged" MouseLeftButtonUp="timeline_slider_MouseLeftButtonUp"/>
+                <Slider x:Name="timeline_slider" Width="300" Minimum="0"  ValueChanged="timeline_slider_ValueChanged"/>
                 <TextBox x:Name="tb_line" Width="100" VerticalAlignment="Center" />
                 <Button x:Name="btn_gotoLine" Content="Go" Margin="2" Click="btn_gotoLine_Click" />
             </StackPanel>

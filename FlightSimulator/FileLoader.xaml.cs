@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +26,7 @@ namespace FlightSimulator
             InitializeComponent();
             vm = new FileLoader_VM(fh);
             DataContext = vm;
+            CheckIfOpened();
 
         }
 
@@ -34,6 +36,22 @@ namespace FlightSimulator
             if (vm.VM_csvPath != "" && vm.VM_xmlPath != "" && vm.VM_fgPath != "" && vm.VM_anomalyCsvPath != "")
             {
                 btn_submit.IsEnabled = true;
+            }
+        }
+
+        private void CheckIfOpened()
+        {
+            if(File.Exists("paths.txt")){
+                string[] lines = File.ReadAllLines("paths.txt");
+                vm.VM_csvPath = lines[0];
+                vm.VM_xmlPath = lines[1];
+                vm.VM_fgPath = lines[2];
+                vm.VM_anomalyCsvPath = lines[3];
+                tb_csvPath.Text = lines[0];
+                tb_xmlPath.Text = lines[1];
+                tb_exePath.Text = lines[2];
+                tb_anomaliesPath.Text = lines[3];
+                checkFinish();
             }
         }
 
@@ -83,6 +101,12 @@ namespace FlightSimulator
         private void btn_submit_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
+            string[] log = new string[4];
+            log[0] = vm.VM_csvPath;
+            log[1] = vm.VM_xmlPath;
+            log[2] = vm.VM_fgPath;
+            log[3] = vm.VM_anomalyCsvPath;
+            File.WriteAllLines("paths.txt", log);
             this.Close();
         }
 

@@ -31,12 +31,8 @@ namespace FlightSimulator
             fileHandler = new FileHandler();
 
             passData_VM passdata = new passData_VM();
-            data_viewer.SetVM(passdata);
-            airspeed_view.SetVM(passdata);
-            altitude_view.SetVM(passdata);
-            direction_view.SetVM(passdata);
-            yawRollPitch_view.SetVM(passdata);
-            joystick.SetVM(passdata);
+            /*data_viewer.SetVM(passdata);
+            joystick.SetVM(passdata);*/
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -49,7 +45,7 @@ namespace FlightSimulator
                 this.IsEnabled = true;
                 string[] names = getNames();
                 flightController.loadCSV(fileHandler.csvPath, names) ;
-                StartFlightGear();
+                //StartFlightGear();
             }
         }
         private string[] getNames()
