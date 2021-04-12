@@ -9,7 +9,7 @@ namespace FlightSimulator
 {
     class AnomalyDetector
     {
-        const string dll_path = @"Plugins/AnomalyDetectorLib.dll";
+        const string dll_path = @"C:\Users\yuval\Desktop\AnomalyDetectorLib.dll";
 
         [DllImport(dll_path, EntryPoint = "learn")]
         static extern void learn(IntPtr detector, IntPtr names, int size, IntPtr sw);
