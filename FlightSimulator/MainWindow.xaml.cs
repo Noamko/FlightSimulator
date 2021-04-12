@@ -31,8 +31,8 @@ namespace FlightSimulator
             fileHandler = new FileHandler();
 
             passData_VM passdata = new passData_VM();
-            data_viewer.SetVM(passdata);
-            joystick.SetVM(passdata);
+            /*data_viewer.SetVM(passdata);
+            joystick.SetVM(passdata);*/
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -46,13 +46,6 @@ namespace FlightSimulator
                 string[] names = getNames();
                 flightController.loadCSV(fileHandler.csvPath, names) ;
                 //StartFlightGear();
-                AnomalyDetector d = new AnomalyDetector();
-                d.LearnNormal(string.Join(",", getNames()), fileHandler.csvPath);
-                d.Detect(string.Join(",", getNames()), fileHandler.anomalyCsvPath);
-                for (int i = 0; i < d.AnomalyCount(); i++)
-                {
-                    System.Diagnostics.Trace.WriteLine(i + " Description: " + d.GetDiscription(i) + " Timestamp: " + d.GetTimeStep(i) + " function: " + d.GetFunction(i));
-                }
             }
         }
         private string[] getNames()

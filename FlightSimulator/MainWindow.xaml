@@ -26,8 +26,7 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <local:JoyStick_view  Margin="5" x:Name="joystick"  Grid.Row="1" Grid.Column="0" Background="White" />
-                <local:DataViewer  x:Name="data_viewer" Grid.Column="0" Grid.ColumnSpan="2" />
+                <local:AnomalyUC />
             </Grid>
         </GroupBox>
     </Grid>

@@ -9,7 +9,7 @@ namespace FlightSimulator
 {
     class AnomalyDetector
     {
-        const string dll_path = @"C:\Users\noamk\source\repos\AnomalyDetectorLib\x64\Release\AnomalyDetectorLib.dll";
+        const string dll_path = @"Plugins/AnomalyDetectorLib.dll";
 
         [DllImport(dll_path, EntryPoint = "learn")]
         static extern void learn(IntPtr detector, IntPtr names, int size, IntPtr sw);
@@ -89,7 +89,7 @@ namespace FlightSimulator
             AnomalyReportVector = detect(this.detector, sw_names, names.Length, sw_filename);
             dispose(sw_filename);
             dispose(sw_names);
-        }
+        } 
 
         public string GetDiscription(int index)
         {

@@ -9,11 +9,20 @@ namespace FlightSimulator
         AnomalyDetector detector;
         Dictionary<string, PairData> pairs;
         FlightDataParser flight_parser;
-        
-        DLLDataParser(AnomalyDetector ad,FlightDataParser flight_parser)
+        FlightController flightController;
+        public DLLDataParser(string normal, string anomaly)
         {
-            this.detector = ad;
-            this.flight_parser = flight_parser;
+            pairs = new Dictionary<string, PairData>();
+            detector = new AnomalyDetector();
+            flightController = FlightController.GetInstance;
+            flight_parser = flightController.getParser;
+
+            //learn and detect
+            detector.LearnNormal(string.Join(",",flightController.Names), normal);
+            detector.Detect(string.Join(",", flightController.Names), anomaly);
+
+            //parse data
+            Parse();
         }
         PairData getPair(string name)
         {
