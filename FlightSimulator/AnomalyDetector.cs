@@ -9,7 +9,7 @@ namespace FlightSimulator
 {
     class AnomalyDetector
     {
-        const string dll_path = @"C:\Users\noamk\source\repos\AnomalyDetectorLib\x64\Debug\AnomalyDetectorLib.dll";
+        const string dll_path = @"C:\Users\noamk\source\repos\AnomalyDetectorLib\x64\Release\AnomalyDetectorLib.dll";
 
         [DllImport(dll_path, EntryPoint = "learn")]
         static extern void learn(IntPtr detector, IntPtr names, int size, IntPtr sw);
@@ -45,19 +45,30 @@ namespace FlightSimulator
         static extern int getAnomalyCount(IntPtr vw);
 
         [DllImport(dll_path, EntryPoint = "getFunc")]
-        static extern IntPtr getFunc(IntPtr vw,int index);
+        static extern IntPtr getFunc(IntPtr vw, int index);
+
+        [DllImport(dll_path, EntryPoint = "test")]
+        static extern IntPtr test();
 
         IntPtr detector;
         IntPtr AnomalyReportVector;
         public AnomalyDetector()
         {
             this.detector = createSimpleAnomalyDetectorInstance();
+            IntPtr sw = test();
+            string s = "";
+            for (int i = 0; i < len(sw); i++)
+            {
+                s += getChar(sw, i);
+            }
+            dispose(sw);
+            Trace.WriteLine(s);
         }
 
         public IntPtr sw_string(string s)
         {
             IntPtr STR = createString(s.Length);
-            for (int i= 0; i < s.Length; i++)
+            for (int i = 0; i < s.Length; i++)
             {
                 addCharToString(STR, s[i]);
             }
@@ -67,7 +78,7 @@ namespace FlightSimulator
         {
             IntPtr sw_filename = sw_string(filename);
             IntPtr sw_names = sw_string(names);
-            learn(detector,sw_names, names.Length, sw_filename);
+            learn(detector, sw_names, names.Length, sw_filename);
             dispose(sw_filename);
             dispose(sw_names);
         }
@@ -84,7 +95,7 @@ namespace FlightSimulator
         {
             IntPtr sw = getDiscription(AnomalyReportVector, index);
             string s = "";
-            for(int i = 0; i < len(sw); i++)
+            for (int i = 0; i < len(sw); i++)
             {
                 s += getChar(sw, i);
             }
@@ -103,7 +114,8 @@ namespace FlightSimulator
 
         public string GetFunction(int index)
         {
-            IntPtr sw = getFunc(detector, index); string s = "";
+            IntPtr sw = getFunc(AnomalyReportVector, index);
+            string s = "";
             for (int i = 0; i < len(sw); i++)
             {
                 s += getChar(sw, i);

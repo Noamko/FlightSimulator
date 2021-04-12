@@ -112,3 +112,5 @@ FlightSimulator/bin/x86/Release/netcoreapp3.1/FlightSimulator.exe
 FlightSimulator/bin/x86/Release/netcoreapp3.1/FlightSimulator.pdb
 FlightSimulator/bin/x86/Release/netcoreapp3.1/FlightSimulator.runtimeconfig.dev.json
 FlightSimulator/bin/x86/Release/netcoreapp3.1/FlightSimulator.runtimeconfig.json
+FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.designer.deps.json
+FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.designer.runtimeconfig.json
