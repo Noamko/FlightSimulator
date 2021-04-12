@@ -26,7 +26,8 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <local:AnomalyUC />
+                
+                <local:AnomalyUC x:Name="anomalyUC"   Grid.Row="1" />
             </Grid>
         </GroupBox>
     </Grid>

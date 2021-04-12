@@ -117,3 +117,7 @@ FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.designer.runtimeconfig.j
 FlightSimulator/obj/Debug/netcoreapp3.1/AnomalyUC.g.i.cs
 FlightSimulator/obj/Debug/netcoreapp3.1/AnomalyUC.g.cs
 FlightSimulator/obj/Debug/netcoreapp3.1/AnomalyUC.baml
+FlightSimulator/obj/Debug/netcoreapp3.1/FlightSimulator.exe
+.vs/FlightSimulator/DesignTimeBuild/.dtbcache
+.vs/FlightSimulator/v16/Server/sqlite3/db.lock
+.vs/FlightSimulator/v16/Server/sqlite3/storage.ide
