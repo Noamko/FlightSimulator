@@ -40,9 +40,6 @@ namespace FlightSimulator
                 Console.WriteLine("Error: client not connected.");
             }
         }
-
-        //TODO: Receive()
-
         public void Close()
         {
             client.Close();

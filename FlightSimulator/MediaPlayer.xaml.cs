@@ -20,7 +20,6 @@ namespace FlightSimulator
     public partial class MediaPlayer : UserControl
     {
         mediaController_VM vm;
-        double oldval;
 
         public MediaPlayer()
         {

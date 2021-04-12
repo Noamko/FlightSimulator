@@ -20,15 +20,15 @@ namespace FlightSimulator
     /// </summary>
     public partial class AnomalyUC : UserControl
     {
-        PlotModel plotmodel;
         Anomalies_vm anomalies_Vm;
         public AnomalyUC()
         {
             InitializeComponent();
-            initModel();
+            plot.Model = initModel();
+            plot.InvalidatePlot(true);
         }
 
-        void initModel()
+        PlotModel initModel()
         {
             PlotModel model = new PlotModel { Title = "Anoamly Graph" };
             model.LegendPosition = LegendPosition.RightBottom;
@@ -38,8 +38,7 @@ namespace FlightSimulator
             var XAxis = new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom };
             model.Axes.Add(Yaxis);
             model.Axes.Add(XAxis);
-            plotmodel = model;
-            plot.Model = model;
+            return model;
         }
 
         public double getValue(string func, double x)
@@ -55,7 +54,6 @@ namespace FlightSimulator
 
         public FunctionSeries addFunc(string func, double max, double min, double interval)
         {
-            double n = 100;
             FunctionSeries serie = new FunctionSeries();
             for (double x = min; x <= max; x += interval)
             {

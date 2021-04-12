@@ -12,7 +12,12 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
         <ComboBox x:Name="cmb_items" Grid.Row="0" Margin="2" />
         <oxy:PlotView x:Name="plot" Grid.Row="1" Margin="5" />
+        <ListView Grid.Column="1" Grid.Row="1" />
     </Grid>
 </UserControl>

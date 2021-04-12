@@ -20,17 +20,9 @@ namespace FlightSimulator
     public partial class JoyStick_view : UserControl
     {
         passData_VM vm;
-        double out_minEle, out_maxEle, out_maxAli, out_minAli;
         public JoyStick_view()
         {
             InitializeComponent();
-       //     vm = new JoyStick_VM();
-        //    DataContext = vm;
-         //   vm.PropertyChanged += Vm_PropertyChanged;
-            out_maxEle = 0;
-            out_minEle = 0;
-            out_maxAli = 0;
-            out_minAli = 0;
         }
         public void SetVM(passData_VM vm)
         {
@@ -47,8 +39,8 @@ namespace FlightSimulator
         {
             if ( e.PropertyName.Equals("VM_elevator"))
             {
-                double xAxis = map(vm.VM_aileron, -1, 1, 0, cnv.ActualHeight - stick_controller.ActualHeight);
-                double yAxis = map(vm.VM_elevator, -1, 1, 0, cnv.ActualWidth - stick_controller.ActualWidth);
+                double xAxis = map(vm.VM_aileron * 2, -1, 1, 0, cnv.ActualHeight - stick_controller.ActualHeight);
+                double yAxis = map(vm.VM_elevator * 2 , -1, 1, 0, cnv.ActualWidth - stick_controller.ActualWidth);
                 setHeadPoition(xAxis,yAxis);
            }          
         }
@@ -59,9 +51,10 @@ namespace FlightSimulator
 
         public void setHeadPoition(double x, double y)
         {
-            //stick_controller.SetValue(Canvas.LeftProperty, x);
             Dispatcher.BeginInvoke(new Action(() => Canvas.SetLeft(stick_controller, x)));
             Dispatcher.BeginInvoke(new Action(() => Canvas.SetTop(stick_controller, y)));
+            Dispatcher.BeginInvoke(new Action(() => stick_rod.X2 = x + 20));
+            Dispatcher.BeginInvoke(new Action(() => stick_rod.Y2 = y + 20));
         }
     }
 }

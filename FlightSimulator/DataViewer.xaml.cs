@@ -44,6 +44,7 @@ namespace FlightSimulator
         {
             this.vm = vm;
             DataContext = vm;
+            joystick.SetVM(vm);
         }
 
         private double map(double x, double in_min, double in_max, double out_min, double out_max)
