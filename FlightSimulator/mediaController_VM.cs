@@ -54,12 +54,22 @@ namespace FlightSimulator
             VM_play();
         }
 
+        public int timePrecents()
+        {
+            if (media.getTotalTimeInMilisecs() != 0)
+            {
+                float precents = (media.getCurrentTimeInMilisecs()*100 / media.getTotalTimeInMilisecs());
+                return (int)precents;
+            }
+            return 0;
+        }
+
         public string VM_totalTime { get { return media.getTotalTime(); } }
 
         public int VM_getTotalTimeInSec { get { return media.getTotalTimeInMilisecs() / 1000; } }
 
         public int VM_getCurrentTimeInSec { get { return media.getCurrentTimeInMilisecs() / 1000; }  }
 
-        public string VM_currentTime { get { return media.getCurrentTime(); }}
+        public string VM_currentTime { get { NotifyPropertyChanged("sliderUpdate");return media.getCurrentTime(); }}
     }
 }

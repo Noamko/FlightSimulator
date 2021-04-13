@@ -115,45 +115,48 @@ namespace FlightSimulator
         }
 
 
-        public Tuple<DataPoint,DataPoint> linearRegOfCorrelative(string name)
-        {
-            if (dc != null)
-            {
-                string nameCor = dc.GetMaxPearsonName(name);
-                Tuple<string, string> lineAandB = dc.linear_reg(name, nameCor);
-                float a = float.Parse(lineAandB.Item1);
-                float b = float.Parse(lineAandB.Item2);
-                float x1 = (float)(dc.getMin(name));
-                float x2 = (float)(dc.getMax(name));
-                DataPoint p1 = new DataPoint(x1, a * x1 + b);
-                DataPoint p2 = new DataPoint(x2, a * x2 + b);
-                return new Tuple<DataPoint, DataPoint>(p1, p2);
-            }
-            return null;
+        //public Tuple<DataPoint,DataPoint> linearRegOfCorrelative(string name)
+        //{
+        //    if (dc != null)
+        //    {
+        //        string nameCor = dc.GetMaxPearsonName(name);
+        //        Tuple<string, string> lineAandB = dc.linear_reg(name, nameCor);
+        //        float a = float.Parse(lineAandB.Item1);
+        //        float b = float.Parse(lineAandB.Item2);
+        //        float x1 = (float)(dc.getMin(name));
+        //        float x2 = (float)(dc.getMax(name));
+        //        DataPoint p1 = new DataPoint(x1, a * x1 + b);
+        //        DataPoint p2 = new DataPoint(x2, a * x2 + b);
+        //        return new Tuple<DataPoint, DataPoint>(p1, p2);
+        //    }
+        //    return null;
 
 
-        }
+        //}
 
 
-        public LinkedList<DataPoint> getPointsOfCorralated (string name)
-        {
-            if (dc!=null)
-            {
-                Tuple<string, string>[] pointsTuple = dc.getCorralatedTuple(name);
-                int length = pointsTuple.Length;
-                LinkedList<DataPoint> list = new LinkedList<DataPoint>();
-                for (int i=0; i < length; i++)
-                {
-                    list.AddLast(new DataPoint(float.Parse(pointsTuple[i].Item1), float.Parse(pointsTuple[i].Item2)));
-                }
-                // return list;
-                return calculateLastSeconds(name);//////////////////////////////////////////////////////////////
-            }
-            return null;
-        }
+        //public LinkedList<DataPoint> getPointsOfCorralated (string name)
+        //{
+        //    if (dc!=null)
+        //    {
+        //        Tuple<string, string>[] pointsTuple = dc.getCorralatedTuple(name);
+        //        int length = pointsTuple.Length;
+        //        LinkedList<DataPoint> list = new LinkedList<DataPoint>();
+        //        for (int i=0; i < length; i++)
+        //        {
+        //            list.AddLast(new DataPoint(float.Parse(pointsTuple[i].Item1), float.Parse(pointsTuple[i].Item2)));
+        //        }
+        //        // return list;
+        //        return calculateLastSeconds(name);//////////////////////////////////////////////////////////////
+        //    }
+        //    return null;
+        //}
         
         public LinkedList<DataPoint> calculateLastSeconds (string name) //name of the original
         {//new//
+            if (dc == null)
+                return null;
+            float maxX, minX;/////////
             int currentTime = mc.getCurrentTimeInMilisecs();
             int currentLine = mc.firstLine;
             int interval = mc.defaultSpeed;
@@ -167,11 +170,29 @@ namespace FlightSimulator
             int endLine = endTime / interval;
             string[] data = fc.getParser.GetDataByName(name);
             string[] dataCorralated = fc.getParser.GetDataByName(dc.GetMaxPearsonName(name));
+            maxX = minX = float.Parse(data[beginLine]);////////////
             LinkedList<DataPoint> list = new LinkedList<DataPoint>();
             for(int i = beginLine;i<endLine;i++)
             {
                 list.AddLast(new DataPoint(float.Parse(data[i]), float.Parse(dataCorralated[i])));
+                ////////////////
+                float info = float.Parse(data[i]);
+                if (info > maxX)
+                    maxX = info;
+                if (info < minX)
+                    minX = info;
+                /////////////////
             }
+            ////////////////////
+            Tuple<string, string> lineAandB = dc.linear_reg(name, dc.GetMaxPearsonName(name));
+            float a = float.Parse(lineAandB.Item1);
+            float b = float.Parse(lineAandB.Item2);
+
+            DataPoint p1 = new DataPoint(minX, a * minX + b);
+            DataPoint p2 = new DataPoint(maxX, a * maxX + b);
+            list.AddLast(p1);
+            list.AddLast(p2);
+            ////////////////////
             return list;
         }
     }

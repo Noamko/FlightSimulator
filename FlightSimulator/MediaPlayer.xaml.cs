@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using System.Windows;
@@ -20,13 +21,34 @@ namespace FlightSimulator
     public partial class MediaPlayer : UserControl
     {
         mediaController_VM vm;
+        bool isMouseDown;
+
 
         public MediaPlayer()
         {
             InitializeComponent();
             vm = new mediaController_VM();
             this.DataContext = vm;
+            vm.PropertyChanged += Update;
+            isMouseDown = false;
 
+        }
+
+        private void Update(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals("VM_goto"))
+            {
+                isMouseDown = false;
+            }
+            if (e.PropertyName.Equals("sliderUpdate") && !isMouseDown)
+            {
+                // this.Dispatcher.Invoke(() =>
+                // {
+                //     System.Diagnostics.Trace.WriteLine((vm.VM_getCurrentTimeInSec / vm.VM_getTotalTimeInSec) * 100);
+                timeline_slider.Value = vm.timePrecents();
+                
+             //   });
+            }
         }
 
         private void btn_play_Click(object sender, RoutedEventArgs e)
@@ -71,6 +93,23 @@ namespace FlightSimulator
         private void btn_gotoend_Click(object sender, RoutedEventArgs e)
         {
             vm.VM_goto(100);
+        }
+
+        private void timeline_slider_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            isMouseDown = true;
+
+        //    vm.VM_goto((int)timeline_slider.Value);
+        //    isMouseDown = false;
+         //   System.Diagnostics.Trace.WriteLine("hi");
+        }
+
+        private void timeline_slider_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+                vm.VM_goto((int)timeline_slider.Value);
+                //        isMouseDown = false;
+  
         }
     }
 }

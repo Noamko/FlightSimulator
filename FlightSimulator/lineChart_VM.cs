@@ -45,8 +45,18 @@ namespace FlightSimulator
                     NotifyPropertyChanged("VM_CorralatedName");
              //       NotifyPropertyChanged("VM_list");
                     NotifyPropertyChanged("dataChanged");
+                  //  VM_points = model.getPointsOfCorralated(name);////////////////////
+                    ///!!!!
+                    VM_points = model.calculateLastSeconds(name);
                     ///
-                    VM_points = model.getPointsOfCorralated(name);////////////////////
+                    List<DataPoint> lst = new List<DataPoint>();
+                    lst.Add(VM_points.Last.Value);
+                    VM_points.RemoveLast();
+                    lst.Add(VM_points.Last.Value);
+                    VM_points.RemoveLast();
+                    VM_lineRegList = lst;
+                    NotifyPropertyChanged("VM_lineRegList");
+                    ////!!
                     NotifyPropertyChanged("VM_points");////////////////////////
                     ///
                     return model.getList(name);
@@ -72,22 +82,34 @@ namespace FlightSimulator
 
 
             ///
-            Tuple<DataPoint, DataPoint> twoPoints = model.linearRegOfCorrelative(newName);
-            if (twoPoints != null)
+            //Tuple<DataPoint, DataPoint> twoPoints = model.linearRegOfCorrelative(newName); I DID IT NOW
+            //if (twoPoints != null)
+            //{
+            //    List<DataPoint> lst = new List<DataPoint>();
+            //    lst.Add(twoPoints.Item1);
+            //    lst.Add(twoPoints.Item2);
+            //    VM_lineRegList = lst;
+            //    NotifyPropertyChanged("VM_lineRegList");
+            //}!!!
+   //         LinkedList<DataPoint> points = model.getPointsOfCorralated(newName);
+            //////////////////////
+            LinkedList<DataPoint> points = model.calculateLastSeconds(newName);
+            List<DataPoint> lst = new List<DataPoint>();
+            /////////////////////////
+            if (points != null)
             {
-                List<DataPoint> lst = new List<DataPoint>();
-                lst.Add(twoPoints.Item1);
-                lst.Add(twoPoints.Item2);
+                /////////
+                lst.Add(points.Last.Value);
+                points.RemoveLast();
+                lst.Add(points.Last.Value);
+                points.RemoveLast();
                 VM_lineRegList = lst;
                 NotifyPropertyChanged("VM_lineRegList");
-            }
-            LinkedList<DataPoint> points = model.getPointsOfCorralated(newName);///////////////////////////////
-            if(points != null)
-            {
+                //////////
                 VM_points = points;
                 NotifyPropertyChanged("VM_points");
             }
-            //////////////////////////////////////////////////////////////////////////
+            
 
 
 
