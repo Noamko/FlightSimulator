@@ -28,6 +28,7 @@ namespace FlightSimulator
 
             //parse data
             Parse();
+            detector.UnloadDlls();
         }
         public PairData getPair(string name)
         {
