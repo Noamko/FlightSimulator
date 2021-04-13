@@ -31,8 +31,7 @@ namespace FlightSimulator
             fileHandler = new FileHandler();
 
             passData_VM passdata = new passData_VM();
-            /*data_viewer.SetVM(passdata);
-            joystick.SetVM(passdata);*/
+            data_viewer.SetVM(passdata);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,15 +44,11 @@ namespace FlightSimulator
                 this.IsEnabled = true;
                 string[] names = getNames();
                 flightController.loadCSV(fileHandler.csvPath, names) ;
-                anomalyUC.LoadCSVS(fileHandler.csvPath, fileHandler.anomalyCsvPath);
-                //StartFlightGear();
-                AnomalyDetector al = new AnomalyDetector();
-                al.LearnNormal(string.Join(",", names), fileHandler.csvPath);
-                al.Detect(string.Join(",", names), fileHandler.anomalyCsvPath);
-                for(int i=0; i<al.AnomalyCount();i++)
-                {
-                    Trace.WriteLine(i + " Description: " + al.GetDiscription(i) + " Timestamp: " + al.GetTimeStep(i) + " function: " + al.GetFunction(i));
-                }
+                AnomalyGraphWindow anom = new AnomalyGraphWindow();
+                anom.Show();
+                anom.LoadCSV(fileHandler.csvPath, fileHandler.anomalyCsvPath);
+                //anomalyUC.LoadCSVS(fileHandler.csvPath, fileHandler.anomalyCsvPath);
+                StartFlightGear();
             }
         }
         private string[] getNames()
@@ -113,11 +108,6 @@ namespace FlightSimulator
             if (fileHandler.fgPath == null)
                 throw new NullReferenceException("FlightGear Path isn't initialized");
             System.Diagnostics.Process.Start(fileHandler.fgPath, "--launcher");
-        }
-
-        private void FlightController_dataChanged(object sender, EventArgs e)
-        {
-            System.Diagnostics.Trace.WriteLine("WOW");
         }
     }
 }

@@ -4,6 +4,7 @@ using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,18 +23,17 @@ namespace FlightSimulator
     /// </summary>
     public partial class AnomalyUC : UserControl
     {
-        PlotModel plotmodel;
+        PlotModel plotModel;
         Anomalies_vm anomalies_Vm;
         public AnomalyUC()
         {
             InitializeComponent();
-            plotmodel =  initModel();
-            plot.Model = plotmodel;
+            plot.Model = initModel();
         }
 
         PlotModel initModel()
         {
-            PlotModel model = new PlotModel { Title = "example" };
+            PlotModel model = new PlotModel { Title = "Example" };
             model.LegendPosition = LegendPosition.RightBottom;
             model.LegendPlacement = LegendPlacement.Outside;
             model.LegendOrientation = LegendOrientation.Horizontal;
@@ -41,9 +41,7 @@ namespace FlightSimulator
             var XAxis = new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom };
             model.Axes.Add(Yaxis);
             model.Axes.Add(XAxis);
-            //plot.Model = model;
-            //model.TrackerChanged += Model_TrackerChanged;
-            
+            plotModel = model;
             return model;
         }
 
@@ -75,7 +73,6 @@ namespace FlightSimulator
 
         public FunctionSeries addFunc(string func, double max, double min, double interval)
         {
-            double n = 100;
             FunctionSeries serie = new FunctionSeries();
             for (double x = min; x <= max; x += interval)
             {
@@ -112,25 +109,15 @@ namespace FlightSimulator
             FunctionSeries serie = new FunctionSeries();
             foreach (Tuple<float, float> tp in list)
             {
-                //var pointAnnotation = new PointAnnotation()
-                //{
-                //    X = Convert.ToDouble(tp.Item1),
-                //    Y = Convert.ToDouble(tp.Item2),
-                //    Text = String.Format("{0}-{1}", "asdasd", "asdsadq")
-                //};
                 
                 DataPoint data = new DataPoint(tp.Item1, tp.Item2);
                 serie.Points.Add(data);
-                int i = 3;
-                //plotmodel.Annotations.Add(pointAnnotation);
             }
-            serie.TrackerFormatString = "hi";
             serie.Color = OxyColors.Black;
             serie.LineStyle = LineStyle.None;
-            serie.MarkerType = MarkerType.Circle;
+            serie.MarkerType = MarkerType.Diamond;
             serie.MarkerSize = 2;
             serie.MarkerFill = OxyColors.Red;
-            //serie.TrackerFormatString += "hi";
             return serie;
         }
 
@@ -138,25 +125,30 @@ namespace FlightSimulator
         {
             anomalies_Vm = new Anomalies_vm(normal, anomaly);
             anomalies_Vm.PropertyChanged += Update;
-            DataContext = anomalies_Vm;
-            cmb_items.ItemsSource = anomalies_Vm.Names;
+            Dispatcher.BeginInvoke(new Action(() => {
+                DataContext = anomalies_Vm;
+                cmb_items.ItemsSource = anomalies_Vm.Names;
+            }));
         }
 
         private void Update(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals("data") && sender == anomalies_Vm) 
+            if (e.PropertyName.Equals("data") && sender == anomalies_Vm)
             {
                 //cmb_items.ItemsSource = anomalies_Vm.Names;
                 plot.Model = null;
-                
-                PairData data = anomalies_Vm.datafunc;
-                foreach (string function in data.function)
+
+
+                //add functions.
+                PairData data = anomalies_Vm.dataPair;
+                for (int i = 0; i < data.function.Count; i++)
                 {
-                    plotmodel.Series.Add(addFunc(function, data.maxPoint, data.minPoint, data.interval));
+                    plotModel.Series.Add(new FunctionSeries((x) => getValue(data.function[i], x), data.minPoint, data.maxPoint, (data.maxPoint - data.minPoint) / 100, "x^2 + y^2 = 16") { Color = OxyColors.Black });
                 }
-                plotmodel.Series.Add(addNormalPoints(data.normal));
-                plotmodel.Series.Add(addAnomalyPoints(data.anomalies));
-                plot.Model = plotmodel;
+
+                plotModel.Series.Add(addNormalPoints(data.normal));
+                plotModel.Series.Add(addAnomalyPoints(data.anomalies));
+                plot.Model = plotModel;
 
             }
         }

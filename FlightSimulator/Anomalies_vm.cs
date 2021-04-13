@@ -17,7 +17,6 @@ namespace FlightSimulator
             parser.PropertyChanged += Update;
            // NotifyPropertyChanged("VM_Names");
         }
-
         private void Update(object sender, PropertyChangedEventArgs e)
         {
        //     if (e.PropertyName.Equals("Names"))
@@ -33,9 +32,10 @@ namespace FlightSimulator
 
         public void dataUpdate(string pair)
         {
-            datafunc = parser.getPair(pair);
+            dataPair = parser.getPair(pair);
         }
-        public PairData datafunc
+
+        public PairData dataPair
         {
             get
             {

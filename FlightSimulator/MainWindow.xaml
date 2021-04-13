@@ -26,7 +26,6 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <local:DataViewer x:Name="data_viewer" />
-                <local:AnomalyUC Grid.Row="1" />
             </Grid>
         </GroupBox>
     </Grid>
