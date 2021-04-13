@@ -168,3 +168,7 @@ FlightSimulator/obj/x64/Debug/netcoreapp3.1/MainWindow.g.i.cs
 FlightSimulator/obj/x64/Debug/netcoreapp3.1/MediaPlayer.g.cs
 FlightSimulator/obj/x64/Debug/netcoreapp3.1/MediaPlayer.g.i.cs
 FlightSimulator/obj/x64/Debug/netcoreapp3.1/MediaPlayer.baml
+FlightSimulator/obj/Debug/netcoreapp3.1/AnomalyGraphWindow.g.i.cs
+FlightSimulator/obj/Debug/netcoreapp3.1/AnomalyGraphWindow.g.cs
+FlightSimulator/obj/Debug/netcoreapp3.1/AnomalyGraphWindow.baml
+FlightSimulator/bin/Debug/netcoreapp3.1/AnomalyDetectionLib.dll

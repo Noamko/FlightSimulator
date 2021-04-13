@@ -8,6 +8,8 @@ namespace FlightSimulator
     {
         public PairData()
         {
+            moveX = 0;
+            moveY = 0;
             anomalies = new List<Tuple<float, float>>();
             normal = new List<Tuple<float, float>>();
             anomaly_detection_times = new List<string>();
@@ -23,5 +25,9 @@ namespace FlightSimulator
         public float maxPoint { get; set; }
 
         public float interval { get; private set; }
+
+        public float moveX { get; set; }
+
+        public float moveY { get; set; }
     }
 }
