@@ -47,8 +47,7 @@ namespace FlightSimulator
                 AnomalyGraphWindow anom = new AnomalyGraphWindow();
                 anom.Show();
                 anom.LoadCSV(fileHandler.csvPath, fileHandler.anomalyCsvPath);
-                //anomalyUC.LoadCSVS(fileHandler.csvPath, fileHandler.anomalyCsvPath);
-          //      StartFlightGear();
+                StartFlightGear();
             }
         }
         private string[] getNames()

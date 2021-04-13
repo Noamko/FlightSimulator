@@ -236,6 +236,7 @@ namespace FlightSimulator
             return getChar(sw, index);
 
         }
+
         string WrapperToString(IntPtr sw, int length) { 
             string s = "";
             for (int i = 0; i < GetWrapperLen(sw); i++)
