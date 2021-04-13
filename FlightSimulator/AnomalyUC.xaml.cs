@@ -28,7 +28,8 @@ namespace FlightSimulator
         public AnomalyUC()
         {
             InitializeComponent();
-            plot.Model = initModel();
+            plotModel = initModel();
+            plot.Model = plotModel;
         }
 
         PlotModel initModel()
@@ -41,7 +42,7 @@ namespace FlightSimulator
             var XAxis = new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom };
             model.Axes.Add(Yaxis);
             model.Axes.Add(XAxis);
-            plotModel = model;
+          //  plotModel = model;
             return model;
         }
 
@@ -71,14 +72,15 @@ namespace FlightSimulator
             //return 20.0;
         }
 
-        public FunctionSeries addFunc(string func, double max, double min, double interval)
+        public FunctionSeries addFunc(string func, double max, double min, double interval,float addX, float addY)
         {
             FunctionSeries serie = new FunctionSeries();
             for (double x = min; x <= max; x += interval)
             {
+
                 //    for (double y = min; y <= max; y += interval)
                 //    {
-                DataPoint data = new DataPoint(x, getValue(func, x));
+                DataPoint data = new DataPoint(x + addX, getValue(func, x) + addY);
                 serie.Points.Add(data);
                 //  }
             }
@@ -137,15 +139,15 @@ namespace FlightSimulator
             {
                 //cmb_items.ItemsSource = anomalies_Vm.Names;
                 plot.Model = null;
-
+                plotModel = new PlotModel();
+                initModel();
 
                 //add functions.
                 PairData data = anomalies_Vm.dataPair;
                 for (int i = 0; i < data.function.Count; i++)
                 {
-                    plotModel.Series.Add(new FunctionSeries((x) => getValue(data.function[i], x), data.minPoint, data.maxPoint, (data.maxPoint - data.minPoint) / 100, "x^2 + y^2 = 16") { Color = OxyColors.Black });
+                    plotModel.Series.Add(addFunc(data.function[i], data.maxPoint, data.minPoint, (data.maxPoint- data.minPoint)/100, data.moveX, data.moveY));
                 }
-
                 plotModel.Series.Add(addNormalPoints(data.normal));
                 plotModel.Series.Add(addAnomalyPoints(data.anomalies));
                 plot.Model = plotModel;

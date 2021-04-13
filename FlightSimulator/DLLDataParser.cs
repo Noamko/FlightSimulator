@@ -60,8 +60,16 @@ namespace FlightSimulator
                     pairData.minPoint = float.Parse(functions_info[1]);
                     pairData.maxPoint = float.Parse(functions_info[2]);
                 }
+                if (int.Parse(functions_info[0].ToString()) == 4)
+                {
+                    pairData.minPoint = float.Parse(functions_info[1]);
+                    pairData.maxPoint = float.Parse(functions_info[2]);
+                    pairData.moveX = float.Parse(functions_info[3]);
+                    pairData.moveY = float.Parse(functions_info[4]);
+                }
 
-                else {
+                else
+                {
                     pairData.minPoint = float.Parse(second_name_data[0]);
                     pairData.maxPoint = pairData.minPoint;
                     for (int ii = 0; ii < first_name_data.Length; ii++)

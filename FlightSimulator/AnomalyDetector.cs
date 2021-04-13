@@ -9,7 +9,7 @@ namespace FlightSimulator
 {
     class AnomalyDetector
     {
-        const string dll_path = @"C:\Users\noamk\source\repos\MinCircleLib\x64\Release\MinCircleLib.dll";
+        const string dll_path = @"C:\Users\yuval\Desktop\MinCircleLib.dll";
 
         [DllImport(dll_path, EntryPoint = "learn")]
         static extern void learn(IntPtr detector, IntPtr names, int size, IntPtr sw);
@@ -113,7 +113,7 @@ namespace FlightSimulator
             return s;
         }
 
-        ~AnomalyDetector()
+         ~AnomalyDetector()
         {
             dispose(detector);
             dispose(AnomalyReportVector);
