@@ -2,7 +2,7 @@
 This application simulates a flight for the flight inspector & pilots that need to study or inspect the flight.
 The flight data receive via *.txt* file, also this project heavily controlled by events so we based most of our code on **MVVM**  **Architectural Pattern**
 - **Pay attention** when we use the linear detector the program **takes time!**
-- **Pay attention** before using the app the user must start the simulation via the menu in the app.
+- **Pay attention** before using the app the user must start the flight gear simulation via the menu on the right side of the app.
 
 ## Flight Data
 - Current & Length time of the flight.
