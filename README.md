@@ -48,7 +48,7 @@ The flight data receive via *.txt* file, also this project heavily controlled by
 - The *FileHandler*, *FileLoader_VM*, *FileLoader* use **MVVM** to bind the file location data to be used in the program
 - The *MediaPlayer*, *MediaController_VM*, *MediaController* , use **MVVM** to bind the data pace and setting the flight position of the record.
 -  The *JoyStick_view*, *PassData_VM*, *FlightController* use **MVVM** architectural  that bind to the data of the flight, so we get a moving Joy-Stick that shows the current steering of the flight.
-- mvvm dll **update**
+- *AnomalyUC*, *DLLDataParser*, *Anomalies_VM* use **MVVM** . The DLLDataParser is the model - it takes all the needed information from the dll which is dynamically loaded and eventually the data is presented in the *AnomalyUC* - the view of the DLL information. The model takes as input float numbers that represents the x and y of the anomaly points, string that represents pairs of  names of the features and another string that represents the function that is needed to be drawn(in out dlls for example it is a function of a line or a function of the needed circle).
 - DataCalculations - make all the math calculations that needed for the charts
 - CSVParser - interface so we can added another way to read the data.
 - Also we implement **Singleton Pattern** on the following classes: *FlightController*, *mediaController* as we want to make sure that only one class to be created, that control all the flights (only one flight per time).
