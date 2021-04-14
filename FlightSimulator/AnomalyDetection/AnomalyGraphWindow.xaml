@@ -9,6 +9,6 @@
     <Grid>
         <TextBlock x:Name="txt_loading" Text="Detecting Anomalies please wait..." VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="36" />
         <local:AnomalyUC x:Name="anomaly_uc" />
-        <Button Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Load DLL" Click="Button_Click"/>
+        <Button Width="100" Height="30" FontSize="18" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Load DLL" Click="Button_Click"/>
     </Grid>
 </Window>

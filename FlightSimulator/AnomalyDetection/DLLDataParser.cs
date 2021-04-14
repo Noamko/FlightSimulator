@@ -68,7 +68,6 @@ namespace FlightSimulator
                     pairData.moveX = float.Parse(functions_info[3]);
                     pairData.moveY = float.Parse(functions_info[4]);
                 }
-
                 else
                 {
                     pairData.minPoint = float.Parse(second_name_data[0]);
@@ -76,18 +75,12 @@ namespace FlightSimulator
                     for (int ii = 0; ii < first_name_data.Length; ii++)
                     {
                         float temp = float.Parse(second_name_data[ii]);
-                        pairData.normal.Add(new Tuple<float, float>(float.Parse(first_name_data[ii]), temp));
                         if (pairData.minPoint > temp) pairData.minPoint = temp;
                         if (pairData.maxPoint < temp) pairData.maxPoint = temp;
                     }
                 }
-                if (pairs.ContainsKey(pairData.name))
+                if (!pairs.ContainsKey(pairData.name))
                 {
-                    pairs[pairData.name].anomaly_detection_times.Add(detector.GetTimeStep(i).ToString());
-                }
-                else
-                {
-                    pairData.anomaly_detection_times.Add(detector.GetTimeStep(i).ToString());
                     pairs.Add(pairData.name, pairData);
                 }
             }
@@ -100,37 +93,29 @@ namespace FlightSimulator
                 {
                     float f1 = float.Parse(flight_parser.GetDataFromLine(detector.GetTimeStep(i), P.name.Split(',')[0]));
                     float f2 = float.Parse(flight_parser.GetDataFromLine(detector.GetTimeStep(i), P.name.Split(',')[1]));
-                    P.anomalies.Add(new Tuple<float, float>(f1, f2));
+                    TimeSpan t = TimeSpan.FromMilliseconds(detector.GetTimeStep(i) * mediaController.GetInstance.simulationSpeed);
+                    string anomaly_time = string.Format("{0:D2}m:{1:D2}s:{2:D3}ms",
+                t.Hours * 60 + t.Minutes, t.Seconds, t.Milliseconds);
+                    string info = "x: " + f1 + " y: " + f2 + "\n=> Anomaly\ntime step: " + anomaly_time;
+                    FlightPoint fp = new FlightPoint(f1, f2, info);
+                    P.anoamly_points.Add(fp);
                     P.anomaly_detection_times.Add(detector.GetTimeStep(i).ToString());
                 }
                 for(int i = 0; i < data_1.Length; i++)
                 {
-                    if (!P.anomaly_detection_times.Contains(i.ToString()))
-                    {
                         float f1 = float.Parse(data_1[i]);
                         float f2 = float.Parse(data_2[i]);
-                        P.normal.Add(new Tuple<float, float>(f1, f2));
-                    }
+                        float x = f1;
+                        float y = f1;
+                        TimeSpan t = TimeSpan.FromMilliseconds(i * mediaController.GetInstance.simulationSpeed);
+                        string point_time = string.Format("{0:D2}m:{1:D2}s:{2:D3}ms",
+                       t.Hours * 60 + t.Minutes, t.Seconds, t.Milliseconds);
+                    string info = "x: " + x + " y: " + y + '\n' + " time step: " + point_time;
+                        P.normal_points.Add(new FlightPoint(x, y, info));
+
                 }
             }
         }
-
-        //the function makes a list of the function and returns 1 if the min and max points should be global and 0 otherwise.
-        private int parseFuncs(PairData data ,string funcs)
-        {
-
-            string[] funcsArr = funcs.Split("|");
-            foreach (string function in funcsArr)
-            {
-                if (function[function.Length - 1] != '$')
-                    data.function.Add(function);
-            }
-            if (funcsArr[funcsArr.Length - 1].Equals("0$"))
-                return 1;
-            return 0;
-        }
-
-
         public void NotifyPropertyChanged(string propName)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));

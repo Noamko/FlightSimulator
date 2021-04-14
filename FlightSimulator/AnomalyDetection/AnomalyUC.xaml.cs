@@ -34,7 +34,7 @@ namespace FlightSimulator
 
         PlotModel initModel()
         {
-            PlotModel model = new PlotModel { Title = "Example" };
+            PlotModel model = new PlotModel { Title = "Anomaly Graph" };
             model.LegendPosition = LegendPosition.RightBottom;
             model.LegendPlacement = LegendPlacement.Outside;
             model.LegendOrientation = LegendOrientation.Horizontal;
@@ -42,24 +42,8 @@ namespace FlightSimulator
             var XAxis = new OxyPlot.Axes.LinearAxis { Position = OxyPlot.Axes.AxisPosition.Bottom };
             model.Axes.Add(Yaxis);
             model.Axes.Add(XAxis);
-          //  plotModel = model;
             return model;
         }
-
-        //private void Model_TrackerChanged(object sender, TrackerEventArgs e)
-        //{
-        //    //try
-        //    //{
-        //        e.HitResult.Text = "hi";
-        //        System.Diagnostics.Trace.WriteLine(e.HitResult.Text);
-        //        System.Diagnostics.Trace.WriteLine(e.HitResult.YAxis);
-        //    }
-        //    catch
-        //    {
-
-        //    }
-        //}
-
         public double getValue(string func, double x)
         {
             string funcCopy = func;
@@ -70,57 +54,6 @@ namespace FlightSimulator
             result = e.Evaluate().ToString();
             return Double.Parse(result);
             //return 20.0;
-        }
-
-        public FunctionSeries addFunc(string func, double max, double min, double interval,float addX, float addY)
-        {
-            FunctionSeries serie = new FunctionSeries();
-            for (double x = min; x <= max; x += interval)
-            {
-
-                //    for (double y = min; y <= max; y += interval)
-                //    {
-                DataPoint data = new DataPoint(x + addX, getValue(func, x) + addY);
-                serie.Points.Add(data);
-                //  }
-            }
-            serie.Color = OxyColors.Black;
-            //serie.LineStyle = LineStyle.None;
-            //serie.MarkerType = MarkerType.Circle;
-            //serie.MarkerSize = 2;
-            //serie.MarkerFill = OxyColors.Red;
-            return serie;
-        }
-        public FunctionSeries addNormalPoints(List<Tuple<float, float>> list)
-        {
-            FunctionSeries serie = new FunctionSeries();
-            foreach (Tuple<float, float> tp in list)
-            {
-                DataPoint data = new DataPoint(tp.Item1, tp.Item2);
-                serie.Points.Add(data);
-            }
-            serie.Color = OxyColors.Black;
-            serie.LineStyle = LineStyle.None;
-            serie.MarkerType = MarkerType.Circle;
-            serie.MarkerSize = 2;
-            serie.MarkerFill = OxyColors.Blue;
-            return serie;
-        }
-        public FunctionSeries addAnomalyPoints(List<Tuple<float, float>> list)
-        {
-            FunctionSeries serie = new FunctionSeries();
-            foreach (Tuple<float, float> tp in list)
-            {
-                
-                DataPoint data = new DataPoint(tp.Item1, tp.Item2);
-                serie.Points.Add(data);
-            }
-            serie.Color = OxyColors.Black;
-            serie.LineStyle = LineStyle.None;
-            serie.MarkerType = MarkerType.Diamond;
-            serie.MarkerSize = 2;
-            serie.MarkerFill = OxyColors.Red;
-            return serie;
         }
 
         public void LoadCSVS(string normal, string anomaly)
@@ -140,18 +73,41 @@ namespace FlightSimulator
                 //cmb_items.ItemsSource = anomalies_Vm.Names;
                 plot.Model = null;
                 plotModel = new PlotModel();
-                initModel();
-
-                //add functions.
+                plotModel = initModel();
+                plotModel.Series.Clear();
                 PairData data = anomalies_Vm.dataPair;
-                for (int i = 0; i < data.function.Count; i++)
-                {
-                    plotModel.Series.Add(addFunc(data.function[i], data.maxPoint, data.minPoint, (data.maxPoint- data.minPoint)/100, data.moveX, data.moveY));
-                }
-                plotModel.Series.Add(addNormalPoints(data.normal));
-                plotModel.Series.Add(addAnomalyPoints(data.anomalies));
-                plot.Model = plotModel;
+                //add functions.
 
+                
+                foreach(string f in data.function)
+                {
+                    FunctionSeries functionSeries =  new FunctionSeries((x) => getValue(f,x), data.minPoint, data.maxPoint, (data.maxPoint - data.minPoint) / 100) { Color = OxyColors.Black };
+                    plotModel.Series.Add(functionSeries);
+                }
+                ScatterSeries normal_scatterSeries = new ScatterSeries();
+                normal_scatterSeries.MarkerType = MarkerType.Circle;
+                normal_scatterSeries.MarkerSize = 2;
+                normal_scatterSeries.MarkerFill = OxyColors.Blue;
+                normal_scatterSeries.TrackerFormatString = "{PointInfo}";
+
+                foreach(FlightPoint p in data.normal_points)
+                {
+                    normal_scatterSeries.Points.Add(p);
+                }
+
+                ScatterSeries anoamloy_scatterSeries = new ScatterSeries();
+                anoamloy_scatterSeries.MarkerType = MarkerType.Circle;
+                anoamloy_scatterSeries.MarkerSize = 2;
+                anoamloy_scatterSeries.MarkerFill = OxyColors.Red;
+                anoamloy_scatterSeries.TrackerFormatString = "{PointInfo}";
+
+                foreach (FlightPoint p in data.anoamly_points)
+                {
+                    anoamloy_scatterSeries.Points.Add(p);
+                }
+                plotModel.Series.Add(anoamloy_scatterSeries);
+                plotModel.Series.Add(normal_scatterSeries);
+                plot.Model = plotModel;
             }
         }
 

@@ -193,3 +193,7 @@ FlightSimulator/obj/x64/Debug/netcoreapp3.1/Charts/LineChart_view.g.i.cs
 FlightSimulator/obj/x64/Debug/netcoreapp3.1/Datahandler/DataViewer.baml
 FlightSimulator/obj/x64/Debug/netcoreapp3.1/Datahandler/DataViewer.g.cs
 FlightSimulator/obj/x64/Debug/netcoreapp3.1/Datahandler/DataViewer.g.i.cs
+FlightSimulator/obj/x64/Debug/netcoreapp3.1/Datahandler/PFDView.g.i.cs
+FlightSimulator/obj/x64/Debug/netcoreapp3.1/PFDView.baml
+FlightSimulator/obj/x64/Debug/netcoreapp3.1/PFDView.g.cs
+FlightSimulator/obj/x64/Debug/netcoreapp3.1/PFDView.g.i.cs
