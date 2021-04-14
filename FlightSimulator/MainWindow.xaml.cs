@@ -32,6 +32,7 @@ namespace FlightSimulator
 
             passData_VM passdata = new passData_VM();
             data_viewer.SetVM(passdata);
+            joyStick.SetVM(passdata);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -43,11 +44,7 @@ namespace FlightSimulator
             {
                 this.IsEnabled = true;
                 string[] names = getNames();
-                flightController.loadCSV(fileHandler.csvPath, names) ;
-                AnomalyGraphWindow anom = new AnomalyGraphWindow();
-                anom.Show();
-                anom.LoadCSV(fileHandler.csvPath, fileHandler.anomalyCsvPath);
-                StartFlightGear();
+                flightController.loadCSV(fileHandler.anomalyCsvPath, names) ;
             }
         }
         private string[] getNames()
@@ -107,6 +104,18 @@ namespace FlightSimulator
             if (fileHandler.fgPath == null)
                 throw new NullReferenceException("FlightGear Path isn't initialized");
             System.Diagnostics.Process.Start(fileHandler.fgPath, "--launcher");
+        }
+
+        private void btn_open_anomalyDet_Click(object sender, RoutedEventArgs e)
+        {
+            AnomalyGraphWindow anom = new AnomalyGraphWindow();
+            anom.Show();
+            anom.LoadCSV(fileHandler.csvPath, fileHandler.anomalyCsvPath);
+        }
+
+        private void btn_open_fg_Click(object sender, RoutedEventArgs e)
+        {
+            StartFlightGear();
         }
     }
 }

@@ -25,7 +25,20 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <local:DataViewer x:Name="data_viewer" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:PFDView  Grid.Row="0" Grid.Column="0"/>
+                <local:DataViewer x:Name="data_viewer" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1"/>
+                <local:JoyStick_view x:Name="joyStick" Grid.Row="1" Grid.Column="0"/>
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <TextBlock Text="Menu" HorizontalAlignment="Center" FontSize="24" />
+                    <Button x:Name="btn_open_fg" Content="Open Flight Gear Simulator" Margin="5" Click="btn_open_fg_Click"/>
+                    <Button x:Name="btn_open_anomalyDet" Content="Open AnomalyDetector Utility" Margin="5" Click="btn_open_anomalyDet_Click"/>
+                </StackPanel>
+                <Rectangle Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="1" Fill="Gray"/>
+                <Rectangle Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.RowSpan="2" Height="1" Fill="Gray"/>
             </Grid>
         </GroupBox>
     </Grid>
